@@ -1,3 +1,4 @@
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:metro_app/view/pages/home.dart';
 import 'package:flutter/material.dart';
 
@@ -29,12 +30,18 @@ class _LoginPageState extends State<Login> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: Stack(
           children: [
+            Positioned.fill(
+              child: SvgPicture.asset(
+                "assets/images/Group 5.svg",
+                fit: BoxFit.cover,
+              ),
+            ),
             Center(
               child: Container(
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.8),
-                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.white.withOpacity(0.9),
+                  borderRadius: BorderRadius.circular(15.0),
                   boxShadow: const [
                     BoxShadow(
                       color: Colors.black26,
