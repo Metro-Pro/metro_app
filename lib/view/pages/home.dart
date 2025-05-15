@@ -53,6 +53,28 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(
                             width:
                                 30.0), // Placeholder for alignment or a future button
+                        GestureDetector(
+                          onTap: () {
+                            // Handle back button tap
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Profile()),
+                            );
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white.withOpacity(0.2),
+                            ),
+                            child: const Icon(
+                              Icons.notifications_active_rounded,
+                              size: 30.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -70,7 +92,6 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      
                     ],
                   ),
                 ],

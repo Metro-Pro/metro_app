@@ -1,9 +1,14 @@
+import 'package:metro_app/view/pages/edit_profile.dart';
 import 'package:metro_app/view/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:metro_app/view/pages/login.dart';
+import 'package:metro_app/view/pages/settings.dart';
 
 class Profile extends StatelessWidget {
+  // final String name;
+
+  // const Profile({Key? key, required this.name}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +60,8 @@ class Profile extends StatelessWidget {
                 ),
                 SizedBox(height: 12),
                 Text(
-                  "username",
+                  // name,
+                  "",
                   style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -82,25 +88,25 @@ class Profile extends StatelessWidget {
                           leading: Icon(Icons.settings, color: Colors.blue),
                           title: Text("edit profile"),
                           trailing: Icon(Icons.arrow_forward_ios),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => EditProfilePage()),
+                            );
+                          },
                         ),
                         ListTile(
                           leading: Icon(Icons.settings, color: Colors.blue),
                           title: Text("Settings"),
                           trailing: Icon(Icons.arrow_forward_ios),
                           onTap: () {
-                            // Navigator.pushReplacement(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //       builder: (context) => HomeScreen()),
-                            // );
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SettingsPage()),
+                            );
                           },
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.lock, color: Colors.red),
-                          title: Text("Privacy"),
-                          trailing: Icon(Icons.arrow_forward_ios),
-                          onTap: () {},
                         ),
                         ListTile(
                           leading: Icon(Icons.logout, color: Colors.black),
