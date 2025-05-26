@@ -8,8 +8,10 @@ import 'package:metro_app/view/pages/ticket.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
+    return SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: Stack(
         children: [
           // Background SVG
           Positioned.fill(
@@ -18,166 +20,67 @@ class HomeScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          SafeArea(
-            child: SingleChildScrollView(
+          SingleChildScrollView(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            // Handle back button tap
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Profile()),
-                            );
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white.withOpacity(0.2),
-                            ),
-                            child: const Icon(
-                              Icons.person_outlined,
-                              size: 30.0,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                            width:
-                                30.0), // Placeholder for alignment or a future button
-                        GestureDetector(
-                          onTap: () {
-                            // Handle back button tap
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Profile()),
-                            );
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white.withOpacity(0.2),
-                            ),
-                            child: const Icon(
-                              Icons.notifications_active_rounded,
-                              size: 30.0,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                const SizedBox(
+                  height: 35.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const SizedBox(height: 750),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            const SizedBox(width: 30),
-                            const SizedBox(width: 15),
-                            const SizedBox(width: 15),
-                            const SizedBox(width: 30),
-                          ],
+                      GestureDetector(
+                        onTap: () {
+                          // Handle back button tap
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Profile()),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white.withOpacity(0.2),
+                          ),
+                          child: const Icon(
+                            Icons.person_outlined,
+                            size: 30.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                          width:
+                              30.0), // Placeholder for alignment or a future button
+                      GestureDetector(
+                        onTap: () {
+                          // Handle back button tap
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Profile()),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white.withOpacity(0.2),
+                          ),
+                          child: const Icon(
+                            Icons.notifications_active_rounded,
+                            size: 30.0,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ],
                   ),
-                ],
-              ),
-            ),
-          )
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(
-            33, 33, 33, 1.0), // Adjust color and opacity as needed
-        selectedItemColor: const Color.fromRGBO(255, 255, 255, 1.0),
-        unselectedItemColor: const Color.fromRGBO(215, 255, 255, 1.0),
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
-                  ),
-                );
-              },
-              child: Icon(
-                Icons.home_rounded,
-                color: const Color.fromRGBO(255, 255, 255, 1.0),
-              ),
-            ),
-            label: 'home',
-          ),
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PaymentPage(),
-                  ),
-                );
-              },
-              child: Icon(
-                Icons.payment_rounded,
-                color: const Color.fromRGBO(255, 255, 255, 1.0),
-              ),
-            ),
-            label: 'payment',
-          ),
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TicketPage(),
-                  ),
-                );
-              },
-              child: Icon(
-                Icons.card_membership_outlined,
-                color: const Color.fromRGBO(255, 255, 255, 1.0),
-              ),
-            ),
-            label: 'ticket',
-          ),
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MetroLinePage(),
-                  ),
-                );
-              },
-              child: Icon(
-                Icons.train_rounded,
-                color: const Color.fromRGBO(255, 255, 255, 1.0),
-              ),
-            ),
-            label: 'metro line',
-          ),
+                ),
+              ]))
         ],
       ),
     );

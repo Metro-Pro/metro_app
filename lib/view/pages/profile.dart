@@ -28,10 +28,7 @@ class Profile extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
-            );
+            Navigator.pop(context);
           },
         ),
       ),
@@ -75,6 +72,7 @@ class Profile extends StatelessWidget {
 
                 // Profile Options
                 Expanded(
+                  
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -85,11 +83,11 @@ class Profile extends StatelessWidget {
                     child: Column(
                       children: [
                         ListTile(
-                          leading: Icon(Icons.settings, color: Colors.blue),
-                          title: Text("edit profile"),
+                          leading: Icon(Icons.person, color: Colors.red),
+                          title: Text("Edit Profile"),
                           trailing: Icon(Icons.arrow_forward_ios),
                           onTap: () {
-                            Navigator.pushReplacement(
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => EditProfilePage()),
@@ -101,7 +99,7 @@ class Profile extends StatelessWidget {
                           title: Text("Settings"),
                           trailing: Icon(Icons.arrow_forward_ios),
                           onTap: () {
-                            Navigator.pushReplacement(
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => SettingsPage()),
@@ -113,7 +111,7 @@ class Profile extends StatelessWidget {
                           title: Text("Logout"),
                           trailing: Icon(Icons.arrow_forward_ios),
                           onTap: () {
-                            Navigator.pushReplacement(
+                            Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => Login()),
                             );

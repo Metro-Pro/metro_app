@@ -9,33 +9,30 @@ class SettingsPage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          ListTile(
-            leading: Icon(Icons.person),
-            title: Text('Account'),
-            onTap: () {
-              // Navigate to account settings
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Notifications'),
-            onTap: () {
-              // Navigate to notification settings
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.lock),
-            title: Text('Privacy'),
-            onTap: () {
-              // Navigate to privacy settings
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.info),
-            title: Text('About'),
-            onTap: () {
-              // Navigate to about page
-            },
+          Column(
+            children: [
+              ListTile(
+                leading: Icon(Icons.person),
+                title: Text('Account'),
+                onTap: () {
+                  // Navigate to account settings
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.lock),
+                title: Text('Privacy'),
+                onTap: () {
+                  // Navigate to privacy settings
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.info),
+                title: Text('About'),
+                onTap: () {
+                  // Navigate to about page
+                },
+              ),
+            ],
           ),
         ],
       ),

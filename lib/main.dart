@@ -1,6 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:metro_app/view/pages/home.dart';
+import 'package:metro_app/view/pages/screen_wrapper.dart';
+
 // import 'package:metro_app/view/pages/login.dart';
 void main() {
   runApp(MyApp());
@@ -11,8 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: ScreenWrapper(),
     );
   }
 }
-
