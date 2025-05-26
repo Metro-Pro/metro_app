@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:metro_app/view/pages/metro_line.dart';
+import 'package:metro_app/view/pages/payment.dart';
 import 'package:metro_app/view/pages/profile.dart';
+import 'package:metro_app/view/pages/ticket.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -108,30 +111,70 @@ class HomeScreen extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: const Color.fromRGBO(255, 255, 255, 1.0),
+            icon: GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(),
+                  ),
+                );
+              },
+              child: Icon(
+                Icons.home_rounded,
+                color: const Color.fromRGBO(255, 255, 255, 1.0),
+              ),
             ),
-            label: 'Home',
+            label: 'home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.payments_outlined,
-              color: const Color.fromRGBO(255, 255, 255, 1.0),
+            icon: GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PaymentPage(),
+                  ),
+                );
+              },
+              child: Icon(
+                Icons.payment_rounded,
+                color: const Color.fromRGBO(255, 255, 255, 1.0),
+              ),
             ),
             label: 'payment',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.card_membership_outlined,
-              color: const Color.fromRGBO(255, 255, 255, 1.0),
+            icon: GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TicketPage(),
+                  ),
+                );
+              },
+              child: Icon(
+                Icons.card_membership_outlined,
+                color: const Color.fromRGBO(255, 255, 255, 1.0),
+              ),
             ),
             label: 'ticket',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.train_outlined,
-              color: const Color.fromRGBO(255, 255, 255, 1.0),
+            icon: GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MetroLinePage(),
+                  ),
+                );
+              },
+              child: Icon(
+                Icons.train_rounded,
+                color: const Color.fromRGBO(255, 255, 255, 1.0),
+              ),
             ),
             label: 'metro line',
           ),
