@@ -64,9 +64,10 @@ class _TicketPageState extends State<TicketPage> {
   Widget build(BuildContext context) {
     calculatePrice();
 
-    return Scaffold(
-      
-      body: Stack(
+    return SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: Stack(
         children: [
           Positioned.fill(
             child: SvgPicture.asset(
@@ -78,17 +79,22 @@ class _TicketPageState extends State<TicketPage> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                Padding(padding: const EdgeInsets.only(top: 40.0)),
+                const Padding(padding: EdgeInsets.only(top: 30.0)),
                 DropdownButtonFormField<String>(
-                  dropdownColor: Color.fromRGBO(33, 33, 33, 1),
-                  decoration: InputDecoration(labelText: 'From',fillColor: Color.fromRGBO(
-            33, 33, 33, 0), filled: true, labelStyle: TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
+                  dropdownColor: const Color.fromRGBO(33, 33, 33, 1),
+                  decoration: const InputDecoration(
+                      labelText: 'From',
+                      fillColor: Color.fromRGBO(33, 33, 33, 0),
+                      filled: true,
+                      labelStyle:
+                          TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
                   value: fromStation,
                   items: stations
                       .map((station) => DropdownMenuItem(
-                            
                             value: station,
-                            child: Text(station, style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
+                            child: Text(station,
+                                style: TextStyle(
+                                    color: Color.fromRGBO(255, 255, 255, 1))),
                           ))
                       .toList(),
                   onChanged: (value) {
@@ -100,13 +106,19 @@ class _TicketPageState extends State<TicketPage> {
                 SizedBox(height: 16),
                 DropdownButtonFormField<String>(
                   dropdownColor: Color.fromRGBO(33, 33, 33, 1),
-                  decoration: InputDecoration(labelText: 'To',fillColor: Color.fromRGBO(
-            33, 33, 33, 0), filled: true, labelStyle: TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
+                  decoration: InputDecoration(
+                      labelText: 'To',
+                      fillColor: Color.fromRGBO(33, 33, 33, 0),
+                      filled: true,
+                      labelStyle:
+                          TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
                   value: toStation,
                   items: stations
                       .map((station) => DropdownMenuItem(
                             value: station,
-                            child: Text(station, style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
+                            child: Text(station,
+                                style: TextStyle(
+                                    color: Color.fromRGBO(255, 255, 255, 1))),
                           ))
                       .toList(),
                   onChanged: (value) {
@@ -117,23 +129,34 @@ class _TicketPageState extends State<TicketPage> {
                 ),
                 SizedBox(height: 16),
                 ListTile(
-                  title: Text(selectedDate == null
-                      ? 'Select Date'
-                      : 'Date: ${selectedDate!.toLocal().toString().split(' ')[0]}', style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
-                  trailing: Icon(Icons.calendar_today, color: Color.fromRGBO(255, 255, 255, 1)),
+                  title: Text(
+                      selectedDate == null
+                          ? 'Select Date'
+                          : 'Date: ${selectedDate!.toLocal().toString().split(' ')[0]}',
+                      style:
+                          TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
+                  trailing: Icon(Icons.calendar_today,
+                      color: Color.fromRGBO(255, 255, 255, 1)),
                   onTap: pickDate,
                 ),
                 ListTile(
-                  title: Text(selectedTime == null
-                      ? 'Select Time'
-                      : 'Time: ${selectedTime!.format(context)}', style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
-                  trailing: Icon(Icons.access_time, color: Color.fromRGBO(255, 255, 255, 1)),
+                  title: Text(
+                      selectedTime == null
+                          ? 'Select Time'
+                          : 'Time: ${selectedTime!.format(context)}',
+                      style:
+                          TextStyle(color: Color.fromRGBO(255, 255, 255, 1))),
+                  trailing: Icon(Icons.access_time,
+                      color: Color.fromRGBO(255, 255, 255, 1)),
                   onTap: pickTime,
                 ),
                 SizedBox(height: 16),
                 Text(
                   'Price: \$${ticketPrice.toStringAsFixed(2)}',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color.fromRGBO(255, 255, 255, 1)),
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(255, 255, 255, 1)),
                 ),
                 Spacer(),
                 ElevatedButton(
@@ -152,83 +175,6 @@ class _TicketPageState extends State<TicketPage> {
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(
-            33, 33, 33, 1.0), // Adjust color and opacity as needed
-        selectedItemColor: const Color.fromRGBO(255, 255, 255, 1.0),
-        unselectedItemColor: const Color.fromRGBO(215, 255, 255, 1.0),
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
-                  ),
-                );
-              },
-              child: Icon(
-                Icons.home_rounded,
-                color: const Color.fromRGBO(255, 255, 255, 1.0),
-              ),
-            ),
-            label: 'home',
-          ),
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PaymentPage(),
-                  ),
-                );
-              },
-              child: Icon(
-                Icons.payment_rounded,
-                color: const Color.fromRGBO(255, 255, 255, 1.0),
-              ),
-            ),
-            label: 'payment',
-          ),
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TicketPage(),
-                  ),
-                );
-              },
-              child: Icon(
-                Icons.card_membership_outlined,
-                color: const Color.fromRGBO(255, 255, 255, 1.0),
-              ),
-            ),
-            label: 'ticket',
-          ),
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MetroLinePage(),
-                  ),
-                );
-              },
-              child: Icon(
-                Icons.train_rounded,
-                color: const Color.fromRGBO(255, 255, 255, 1.0),
-              ),
-            ),
-            label: 'metro line',
           ),
         ],
       ),

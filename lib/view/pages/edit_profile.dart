@@ -36,9 +36,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => Profile()),
+                        Navigator.pop(
+                          context
                         );
                       },
                       child: Container(
@@ -116,7 +115,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       //   onPressed: () {
                       //     if (_formKey.currentState!.validate()) {
                       //       String updatedName = _nameController.text;
-                      //       Navigator.pushReplacement(
+                      //       Navigator.push(
                       //         context,
                       //         MaterialPageRoute(
                       //           builder: (context) =>

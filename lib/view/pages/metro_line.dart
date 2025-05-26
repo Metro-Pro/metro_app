@@ -20,8 +20,10 @@ class _MetroLinePageState extends State<MetroLinePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
+    return SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: Stack(
         children: [
           Positioned.fill(
             child: SvgPicture.asset(
@@ -34,7 +36,10 @@ class _MetroLinePageState extends State<MetroLinePage> {
             child: Column(
               children: [
                 DropdownButton<String>(
-                  hint: Text('Select a Metro Line', style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1)), ),
+                  hint: Text(
+                    'Select a Metro Line',
+                    style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1)),
+                  ),
                   value: selectedLine,
                   dropdownColor: Color.fromRGBO(33, 33, 33, 1),
                   focusColor: Color.fromRGBO(255, 255, 255, 1),
@@ -42,7 +47,11 @@ class _MetroLinePageState extends State<MetroLinePage> {
                   items: metroLines.keys.map((line) {
                     return DropdownMenuItem(
                       value: line,
-                      child: Text(line, style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1)), ),
+                      child: Text(
+                        line,
+                        style:
+                            TextStyle(color: Color.fromRGBO(255, 255, 255, 1)),
+                      ),
                     );
                   }).toList(),
                   onChanged: (value) {
@@ -58,91 +67,21 @@ class _MetroLinePageState extends State<MetroLinePage> {
                       itemCount: metroLines[selectedLine]!.length,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          leading: Icon(Icons.train, color: Color.fromRGBO(255, 255, 255, 1),),
-                          title: Text(metroLines[selectedLine]![index], style: TextStyle(color: Color.fromRGBO(255, 255, 255, 1)),),
+                          leading: Icon(
+                            Icons.train,
+                            color: Color.fromRGBO(255, 255, 255, 1),
+                          ),
+                          title: Text(
+                            metroLines[selectedLine]![index],
+                            style: TextStyle(
+                                color: Color.fromRGBO(255, 255, 255, 1)),
+                          ),
                         );
                       },
                     ),
                   ),
               ],
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(
-            33, 33, 33, 1.0), // Adjust color and opacity as needed
-        selectedItemColor: const Color.fromRGBO(255, 255, 255, 1.0),
-        unselectedItemColor: const Color.fromRGBO(215, 255, 255, 1.0),
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
-                  ),
-                );
-              },
-              child: Icon(
-                Icons.home_rounded,
-                color: const Color.fromRGBO(255, 255, 255, 1.0),
-              ),
-            ),
-            label: 'home',
-          ),
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PaymentPage(),
-                  ),
-                );
-              },
-              child: Icon(
-                Icons.payment_rounded,
-                color: const Color.fromRGBO(255, 255, 255, 1.0),
-              ),
-            ),
-            label: 'payment',
-          ),
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TicketPage(),
-                  ),
-                );
-              },
-              child: Icon(
-                Icons.card_membership_outlined,
-                color: const Color.fromRGBO(255, 255, 255, 1.0),
-              ),
-            ),
-            label: 'ticket',
-          ),
-          BottomNavigationBarItem(
-            icon: GestureDetector(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MetroLinePage(),
-                  ),
-                );
-              },
-              child: Icon(
-                Icons.train_rounded,
-                color: const Color.fromRGBO(255, 255, 255, 1.0),
-              ),
-            ),
-            label: 'metro line',
           ),
         ],
       ),

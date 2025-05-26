@@ -16,7 +16,7 @@ class _LoginPageState extends State<Login> {
 
   void _login() {
     if (_formKey.currentState?.validate() ?? false) {
-      Navigator.pushReplacement(
+      Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => HomeScreen()),
       );
