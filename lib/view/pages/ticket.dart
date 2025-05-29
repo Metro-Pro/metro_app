@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Station {
   final String name;
@@ -272,14 +271,9 @@ class TicketPageState extends State<TicketPage> {
     final isPeakHour = isCurrentlyPeakHours();
 
     return Scaffold(
+      backgroundColor: const Color.fromRGBO(33, 33, 33, 1),
       body: Stack(
         children: [
-          Positioned.fill(
-            child: SvgPicture.asset(
-              "assets/images/Group 5.svg",
-              fit: BoxFit.cover,
-            ),
-          ),
           SafeArea(
             child: Column(
               children: [

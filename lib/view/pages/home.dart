@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:metro_app/view/pages/profile.dart';
-
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      color: const Color.fromRGBO(33, 33, 33, 1),
       width: double.infinity,
       height: double.infinity,
       child: Stack(
         children: [
-          // Background SVG
-          Positioned.fill(
-            child: SvgPicture.asset(
-              "assets/images/Group 5.svg",
-              fit: BoxFit.cover,
-            ),
-          ),
           SingleChildScrollView(
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,7 +29,8 @@ class HomeScreen extends StatelessWidget {
                           // Handle back button tap
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const Profile()),
+                            MaterialPageRoute(
+                                builder: (context) => const Profile()),
                           );
                         },
                         child: Container(
@@ -61,7 +54,8 @@ class HomeScreen extends StatelessWidget {
                           // Handle back button tap
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const Profile()),
+                            MaterialPageRoute(
+                                builder: (context) => const Profile()),
                           );
                         },
                         child: Container(
