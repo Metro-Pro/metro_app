@@ -1,11 +1,12 @@
 import 'package:metro_app/view/pages/edit_profile.dart';
-import 'package:metro_app/view/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:metro_app/view/pages/login.dart';
 import 'package:metro_app/view/pages/settings.dart';
 
 class Profile extends StatelessWidget {
+  const Profile({super.key});
+
   // final String name;
 
   // const Profile({Key? key, required this.name}) : super(key: key);
@@ -13,7 +14,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Profile',
           style: TextStyle(
             fontSize: 20,
@@ -26,7 +27,7 @@ class Profile extends StatelessWidget {
         backgroundColor: const Color.fromARGB(0, 255, 255, 255),
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -48,15 +49,15 @@ class Profile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 50), // Spacer to push content down
-                CircleAvatar(
+                const SizedBox(height: 50), // Spacer to push content down
+                const CircleAvatar(
                   radius: 50,
-                  backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                  backgroundColor: Color.fromARGB(255, 255, 255, 255),
                   // backgroundImage:
                   //     AssetImage("assets/images/profile_picture.png"),
                 ),
-                SizedBox(height: 12),
-                Text(
+                const SizedBox(height: 12),
+                const Text(
                   // name,
                   "",
                   style: TextStyle(
@@ -64,56 +65,56 @@ class Profile extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
-                Text(
+                const Text(
                   "username@example.com",
                   style: TextStyle(fontSize: 16, color: Colors.white70),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Profile Options
                 Expanded(
                   
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius:
                           BorderRadius.vertical(top: Radius.circular(20)),
                     ),
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       children: [
                         ListTile(
-                          leading: Icon(Icons.person, color: Colors.red),
-                          title: Text("Edit Profile"),
-                          trailing: Icon(Icons.arrow_forward_ios),
+                          leading: const Icon(Icons.person, color: Colors.red),
+                          title: const Text("Edit Profile"),
+                          trailing: const Icon(Icons.arrow_forward_ios),
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => EditProfilePage()),
+                                  builder: (context) => const EditProfilePage()),
                             );
                           },
                         ),
                         ListTile(
-                          leading: Icon(Icons.settings, color: Colors.blue),
-                          title: Text("Settings"),
-                          trailing: Icon(Icons.arrow_forward_ios),
+                          leading: const Icon(Icons.settings, color: Colors.blue),
+                          title: const Text("Settings"),
+                          trailing: const Icon(Icons.arrow_forward_ios),
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SettingsPage()),
+                                  builder: (context) => const SettingsPage()),
                             );
                           },
                         ),
                         ListTile(
-                          leading: Icon(Icons.logout, color: Colors.black),
-                          title: Text("Logout"),
-                          trailing: Icon(Icons.arrow_forward_ios),
+                          leading: const Icon(Icons.logout, color: Colors.black),
+                          title: const Text("Logout"),
+                          trailing: const Icon(Icons.arrow_forward_ios),
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Login()),
+                              MaterialPageRoute(builder: (context) => const Login()),
                             );
                           },
                         ),

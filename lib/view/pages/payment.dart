@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:metro_app/view/pages/home.dart';
-import 'package:metro_app/view/pages/metro_line.dart';
-import 'package:metro_app/view/pages/ticket.dart';
 
 class PaymentPage extends StatelessWidget {
-  const PaymentPage({Key? key}) : super(key: key);
+  const PaymentPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +31,8 @@ class PaymentPage extends StatelessWidget {
                 leading: Icon(option['icon'] as IconData,
                     color: const Color.fromRGBO(255, 255, 255, 1.0)),
                 title: Text(option['title'] as String,
-                    style: TextStyle(
-                        color: const Color.fromRGBO(255, 255, 255, 1.0))),
+                    style: const TextStyle(
+                        color: Color.fromRGBO(255, 255, 255, 1.0))),
                 tileColor: const Color.fromRGBO(33, 33, 33, 1.0),
                 trailing: const Icon(Icons.arrow_forward_ios),
                 onTap: () {

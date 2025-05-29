@@ -13,10 +13,10 @@ class ScreenWrapper extends StatefulWidget {
 
 class _ScreenWrapperState extends State<ScreenWrapper> {
   List<Widget> pages = [
-    HomeScreen(),
+    const HomeScreen(),
     const PaymentPage(),
-    TicketPage(),
-    MetroLinePage()
+    const TicketPage(),
+    const MetroLinePage()
   ];
   int index = 0;
   Color unselectedItemColor = Colors.grey;

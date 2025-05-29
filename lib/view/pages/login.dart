@@ -6,10 +6,10 @@ class Login extends StatefulWidget {
   const Login({super.key});
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  LoginPageState createState() => LoginPageState();
 }
 
-class _LoginPageState extends State<Login> {
+class LoginPageState extends State<Login> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -18,7 +18,7 @@ class _LoginPageState extends State<Login> {
     if (_formKey.currentState?.validate() ?? false) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
       );
     }
   }

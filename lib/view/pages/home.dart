@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:metro_app/view/pages/metro_line.dart';
-import 'package:metro_app/view/pages/payment.dart';
 import 'package:metro_app/view/pages/profile.dart';
-import 'package:metro_app/view/pages/ticket.dart';
+
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                           // Handle back button tap
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Profile()),
+                            MaterialPageRoute(builder: (context) => const Profile()),
                           );
                         },
                         child: Container(
@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                           // Handle back button tap
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Profile()),
+                            MaterialPageRoute(builder: (context) => const Profile()),
                           );
                         },
                         child: Container(
