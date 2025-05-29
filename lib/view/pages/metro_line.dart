@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class MetroLinePage extends StatefulWidget {
   const MetroLinePage({super.key});
@@ -34,7 +33,6 @@ class MetroLinePageState extends State<MetroLinePage> {
     showDialog(
       context: context,
       builder: (context) => Dialog(
-        backgroundColor: Colors.transparent,
         child: Container(
           decoration: BoxDecoration(
             color: Colors.black87,
@@ -165,226 +163,220 @@ class MetroLinePageState extends State<MetroLinePage> {
         ),
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return Dialog(
-                        backgroundColor: Colors.transparent,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.black87,
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: Colors.white24),
-                          ),
-                          child: Stack(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: SvgPicture.asset(
-                                  "assets/images/image_2.svg",
-                                  fit: BoxFit.contain,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: double.infinity,
+                  color: const Color.fromRGBO(33, 33, 33, 1),
+                  height: 500,
+                  child: GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Dialog(
+                            insetPadding: EdgeInsets.zero,
+                            child: Stack(
+                              alignment: Alignment.topRight,
+                              children: [
+                                InteractiveViewer(
+                                  panEnabled: true,
+                                  boundaryMargin: const EdgeInsets.all(20),
+                                  minScale: 0.5,
+                                  maxScale: 4,
+                                  child: const Image(
+                                    image: AssetImage(
+                                        "assets/images/Cairo-Metro-Map.png"),
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
-                              ),
-                              Positioned(
-                                right: 8,
-                                top: 8,
-                                child: IconButton(
+                                IconButton(
                                   icon: const Icon(Icons.close,
                                       color: Colors.white),
-                                  onPressed: () => Navigator.of(context).pop(),
+                                  onPressed: () => Navigator.pop(context),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
+                              ],
+                            ),
+                          );
+                        },
                       );
                     },
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.black87,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.white24),
-                  ),
-                  padding: const EdgeInsets.all(16),
-                  child: SvgPicture.asset(
-                    "assets/images/image_2.svg",
-                    height: 200,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 24),
-              // From Station Selection
-              InkWell(
-                onTap: () => _showStationSelectionDialog(isOrigin: true),
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-                  decoration: BoxDecoration(
-                    color: Colors.black87,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: fromStation != null ? Colors.blue : Colors.white24,
-                      width: fromStation != null ? 1.5 : 1,
+                    child: const Image(
+                      image: AssetImage("assets/images/Cairo-Metro-Map.png"),
+                      fit: BoxFit.contain,
                     ),
                   ),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.location_on, color: Colors.white70),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'From',
-                              style: TextStyle(
-                                color: Colors.white70,
-                                fontSize: fromStation != null ? 12 : 14,
-                              ),
-                            ),
-                            if (fromStation != null) ...[
-                              const SizedBox(height: 4),
-                              Text(
-                                fromStation!,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ],
-                        ),
-                      ),
-                      const Icon(Icons.keyboard_arrow_down,
-                          color: Colors.white70),
-                    ],
-                  ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              // To Station Selection
-              InkWell(
-                onTap: () => _showStationSelectionDialog(isOrigin: false),
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-                  decoration: BoxDecoration(
-                    color: Colors.black87,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: toStation != null ? Colors.blue : Colors.white24,
-                      width: toStation != null ? 1.5 : 1,
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.location_on, color: Colors.white70),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'To',
-                              style: TextStyle(
-                                color: Colors.white70,
-                                fontSize: toStation != null ? 12 : 14,
-                              ),
-                            ),
-                            if (toStation != null) ...[
-                              const SizedBox(height: 4),
-                              Text(
-                                toStation!,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ],
-                        ),
-                      ),
-                      const Icon(Icons.keyboard_arrow_down,
-                          color: Colors.white70),
-                    ],
-                  ),
-                ),
-              ),
-              if (fromStation != null && toStation != null) ...[
                 const SizedBox(height: 24),
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.black87,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.white24),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Route Information',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
+                // From Station Selection
+                InkWell(
+                  onTap: () => _showStationSelectionDialog(isOrigin: true),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 16, horizontal: 12),
+                    decoration: BoxDecoration(
+                      color: Colors.black87,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color:
+                            fromStation != null ? Colors.blue : Colors.white24,
+                        width: fromStation != null ? 1.5 : 1,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.location_on, color: Colors.white70),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'From',
+                                style: TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: fromStation != null ? 12 : 14,
+                                ),
+                              ),
+                              if (fromStation != null) ...[
+                                const SizedBox(height: 4),
+                                Text(
+                                  fromStation!,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 16),
-                      Row(
-                        children: [
-                          const Icon(Icons.access_time, color: Colors.white70),
-                          const SizedBox(width: 8),
-                          const Text(
-                            'Estimated Time: ',
-                            style: TextStyle(color: Colors.white70),
-                          ),
-                          Text(
-                            '25 mins',
-                            style: TextStyle(
-                              color: Colors.green[300],
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          const Icon(Icons.train, color: Colors.white70),
-                          const SizedBox(width: 8),
-                          const Text(
-                            'Next Train: ',
-                            style: TextStyle(color: Colors.white70),
-                          ),
-                          Text(
-                            '3 mins',
-                            style: TextStyle(
-                              color: Colors.orange[300],
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                        const Icon(Icons.keyboard_arrow_down,
+                            color: Colors.white70),
+                      ],
+                    ),
                   ),
                 ),
+                const SizedBox(height: 16),
+                // To Station Selection
+                InkWell(
+                  onTap: () => _showStationSelectionDialog(isOrigin: false),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 16, horizontal: 12),
+                    decoration: BoxDecoration(
+                      color: Colors.black87,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: toStation != null ? Colors.blue : Colors.white24,
+                        width: toStation != null ? 1.5 : 1,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.location_on, color: Colors.white70),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'To',
+                                style: TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: toStation != null ? 12 : 14,
+                                ),
+                              ),
+                              if (toStation != null) ...[
+                                const SizedBox(height: 4),
+                                Text(
+                                  toStation!,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ],
+                          ),
+                        ),
+                        const Icon(Icons.keyboard_arrow_down,
+                            color: Colors.white70),
+                      ],
+                    ),
+                  ),
+                ),
+                if (fromStation != null && toStation != null) ...[
+                  const SizedBox(height: 24),
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.black87,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: Colors.white24),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Route Information',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Row(
+                          children: [
+                            const Icon(Icons.access_time,
+                                color: Colors.white70),
+                            const SizedBox(width: 8),
+                            const Text(
+                              'Estimated Time: ',
+                              style: TextStyle(color: Colors.white70),
+                            ),
+                            Text(
+                              '25 mins',
+                              style: TextStyle(
+                                color: Colors.green[300],
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          children: [
+                            const Icon(Icons.train, color: Colors.white70),
+                            const SizedBox(width: 8),
+                            const Text(
+                              'Next Train: ',
+                              style: TextStyle(color: Colors.white70),
+                            ),
+                            Text(
+                              '3 mins',
+                              style: TextStyle(
+                                color: Colors.orange[300],
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),

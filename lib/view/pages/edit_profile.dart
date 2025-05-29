@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
@@ -19,12 +18,6 @@ class EditProfilePageState extends State<EditProfilePage> {
     return Scaffold(
         body: Stack(
       children: [
-        Positioned.fill(
-          child: SvgPicture.asset(
-            "assets/images/Group 5.svg",
-            fit: BoxFit.cover,
-          ),
-        ),
         SafeArea(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(16.0),
