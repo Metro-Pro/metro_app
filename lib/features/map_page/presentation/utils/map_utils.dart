@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/services.dart';
 import 'package:metro_app/models/station.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MapUtils {
   static Future<List<Station>> getStations() async {
@@ -17,5 +19,14 @@ class MapUtils {
     return stations
         .where((station) => station.lineNumber == lineNumber)
         .toList();
+  }
+
+  static Future<bool> openInGoogleMaps(String url) async {
+    log('Opening Google Maps with URL: $url');
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      return false;
+    }
+    return true;
   }
 }
