@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:metro_app/features/map_page/presentation/utils/map_utils.dart';
+import 'package:metro_app/features/map_page/presentation/widgets/station_dialog.dart';
 import 'package:metro_app/features/map_page/presentation/widgets/zoom_button.dart';
 import 'package:metro_app/models/station.dart';
 
@@ -33,8 +34,8 @@ class _MapPageState extends State<MapPage> {
     );
   }
 
-  Future<void> _handleOpenInGoogleMaps(String url) async {
-    final success = await MapUtils.openInGoogleMaps(url);
+  Future<void> _handleOpenInGoogleMaps(LatLng location) async {
+    final success = await MapUtils.openInGoogleMaps(location);
     if (!success && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -180,51 +181,14 @@ class _MapPageState extends State<MapPage> {
               ],
             ),
           if (_selectedStation != null)
-            Positioned(
-              bottom: 100,
-              left: 16,
-              right: 16,
-              child: Card(
-                elevation: 4,
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        _selectedStation!.name,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          TextButton.icon(
-                            onPressed: () {
-                              _handleOpenInGoogleMaps(
-                                  _selectedStation!.googleMapsLink);
-                            },
-                            icon: const Icon(Icons.map),
-                            label: const Text('Open in Google Maps'),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                _selectedStation = null;
-                              });
-                            },
-                            icon: const Icon(Icons.close),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+            StationDialog(
+              station: _selectedStation!,
+              onClose: () {
+                setState(() {
+                  _selectedStation = null;
+                });
+              },
+              onOpenInGoogleMaps: _handleOpenInGoogleMaps,
             ),
           Positioned(
             right: 16,

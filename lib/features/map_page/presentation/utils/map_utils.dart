@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/services.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:metro_app/models/station.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -21,7 +22,10 @@ class MapUtils {
         .toList();
   }
 
-  static Future<bool> openInGoogleMaps(String url) async {
+  static Future<bool> openInGoogleMaps(LatLng location) async {
+    String url =
+        "https://www.google.com/maps?q=${location.latitude},${location.longitude}";
+
     log('Opening Google Maps with URL: $url');
     final Uri uri = Uri.parse(url);
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
