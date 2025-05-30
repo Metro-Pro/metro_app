@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:metro_app/view/pages/home.dart';
+import 'package:metro_app/view/pages/home_page.dart';
 import 'package:metro_app/view/pages/metro_line.dart';
 import 'package:metro_app/view/pages/subscription.dart';
 import 'package:metro_app/view/pages/ticket.dart';
@@ -13,7 +13,7 @@ class ScreenWrapper extends StatefulWidget {
 
 class _ScreenWrapperState extends State<ScreenWrapper> {
   List<Widget> pages = [
-    const HomeScreen(),
+    const HomePage(),
     const SubscriptionPage(),
     const TicketPage(),
     const MetroLinePage()
