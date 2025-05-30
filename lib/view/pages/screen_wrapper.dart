@@ -14,7 +14,7 @@ class ScreenWrapper extends StatefulWidget {
 class _ScreenWrapperState extends State<ScreenWrapper> {
   List<Widget> pages = [
     const HomeScreen(),
-    const PaymentPage(),
+    const SubscriptionPage(),
     const TicketPage(),
     const MetroLinePage()
   ];
