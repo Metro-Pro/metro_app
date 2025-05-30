@@ -13,6 +13,7 @@ class Station {
   final Map<String, dynamic>?
       facilities; // e.g., {'parking': true, 'wheelchair': true}
   final List<String>? connectingStations;
+  final String googleMapsLink;
 
   Station({
     required this.id,
@@ -26,15 +27,16 @@ class Station {
     this.description,
     this.facilities,
     this.connectingStations,
+    required this.googleMapsLink,
   });
 
-  static Station fromJson(Map<String, dynamic> json) {
+  factory Station.fromJson(Map<String, dynamic> json) {
     return Station(
       id: json['id'],
-      name: json['name'],
-      code: json['code'],
-      latitude: json['latitude'].toDouble(),
-      longitude: json['longitude'].toDouble(),
+      name: json['name'] as String,
+      code: json['code'] as String,
+      latitude: json['latitude'] as double,
+      longitude: json['longitude'] as double,
       lineIds: List<String>.from(json['lineIds']),
       isActive: json['isActive'],
       address: json['address'],
@@ -43,6 +45,7 @@ class Station {
       connectingStations: json['connectingStations'] != null
           ? List<String>.from(json['connectingStations'])
           : null,
+      googleMapsLink: json['googleMapsLink'] as String,
     );
   }
 
@@ -59,6 +62,7 @@ class Station {
       'description': description,
       'facilities': facilities,
       'connectingStations': connectingStations,
+      'googleMapsLink': googleMapsLink,
     };
   }
 
@@ -76,7 +80,8 @@ class Station {
         other.address == address &&
         other.description == description &&
         mapEquals(other.facilities, facilities) &&
-        listEquals(other.connectingStations, connectingStations);
+        listEquals(other.connectingStations, connectingStations) &&
+        other.googleMapsLink == googleMapsLink;
   }
 
   @override
@@ -91,7 +96,8 @@ class Station {
         address.hashCode ^
         description.hashCode ^
         facilities.hashCode ^
-        connectingStations.hashCode;
+        connectingStations.hashCode ^
+        googleMapsLink.hashCode;
   }
 
   @override

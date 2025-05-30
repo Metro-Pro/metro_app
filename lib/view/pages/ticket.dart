@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:metro_app/view/pages/payment.dart';
 
 class Station {
   final String name;
   final int estimatedWaitMin;
+  final String line;
 
-  const Station(this.name, this.estimatedWaitMin);
+  const Station(this.name, this.estimatedWaitMin, this.line);
 }
 
 class SearchableDropdown extends StatelessWidget {
@@ -41,7 +43,7 @@ class SearchableDropdown extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
           decoration: BoxDecoration(
-            color: Colors.black87,
+            color: Colors.white.withOpacity(0.1),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
               color: Colors.transparent,
@@ -50,7 +52,12 @@ class SearchableDropdown extends StatelessWidget {
           ),
           child: Row(
             children: [
-              const Icon(Icons.location_on, color: Colors.white70, size: 20),
+              Icon(
+                Icons.location_on,
+                color:
+                    value != null ? _getLineColor(value!.line) : Colors.white70,
+                size: 20,
+              ),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
@@ -61,9 +68,7 @@ class SearchableDropdown extends StatelessWidget {
                       label,
                       style: TextStyle(
                         color: Colors.white70,
-                        fontSize: value != null
-                            ? 12
-                            : 14, // Smaller when station is selected
+                        fontSize: value != null ? 12 : 14,
                       ),
                     ),
                     const SizedBox(height: 2),
@@ -76,6 +81,16 @@ class SearchableDropdown extends StatelessWidget {
                             value != null ? FontWeight.w500 : FontWeight.normal,
                       ),
                     ),
+                    if (value != null) ...[
+                      const SizedBox(height: 2),
+                      Text(
+                        value!.line,
+                        style: TextStyle(
+                          color: _getLineColor(value!.line),
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
                   ],
                 ),
               ),
@@ -85,6 +100,19 @@ class SearchableDropdown extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Color _getLineColor(String line) {
+    switch (line) {
+      case 'Line 1':
+        return Colors.blue;
+      case 'Line 2':
+        return Colors.blue;
+      case 'Line 3':
+        return Colors.blue;
+      default:
+        return Colors.white70;
+    }
   }
 }
 
@@ -165,9 +193,29 @@ class _StationSearchDialogState extends State<StationSearchDialog> {
                 itemBuilder: (context, index) {
                   final station = filteredStations[index];
                   return ListTile(
+                    leading: Container(
+                      width: 24,
+                      height: 24,
+                      decoration: BoxDecoration(
+                        color: _getLineColor(station.line),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.train,
+                        color: Colors.white,
+                        size: 16,
+                      ),
+                    ),
                     title: Text(
                       station.name,
                       style: const TextStyle(color: Colors.white),
+                    ),
+                    subtitle: Text(
+                      station.line,
+                      style: TextStyle(
+                        color: _getLineColor(station.line),
+                        fontSize: 12,
+                      ),
                     ),
                     onTap: () {
                       widget.onSelect(station);
@@ -181,6 +229,19 @@ class _StationSearchDialogState extends State<StationSearchDialog> {
         ),
       ),
     );
+  }
+
+  Color _getLineColor(String line) {
+    switch (line) {
+      case 'Line 1':
+        return Colors.blue;
+      case 'Line 2':
+        return Colors.blue;
+      case 'Line 3':
+        return Colors.blue;
+      default:
+        return Colors.white70;
+    }
   }
 
   @override
@@ -203,18 +264,91 @@ class TicketPageState extends State<TicketPage> {
   String? selectedTicketType;
   double ticketPrice = 0.0;
 
-  // Realistic metro stations
+  // Cairo Metro stations
   final List<Station> stations = const [
-    Station('Central Station', 3),
-    Station('City Square', 4),
-    Station('Business District', 5),
-    Station('University Campus', 6),
-    Station('Sports Complex', 7),
-    Station('Shopping Mall', 4),
-    Station('Airport Express', 8),
-    Station('Tech Park', 6),
-    Station('Riverside', 5),
-    Station('Convention Center', 4),
+    // Line 1
+    Station('Helwan', 3, 'Line 1'),
+    Station('Ain Helwan', 3, 'Line 1'),
+    Station('Helwan University', 3, 'Line 1'),
+    Station('Wadi Hof', 3, 'Line 1'),
+    Station('Hadayek Helwan', 3, 'Line 1'),
+    Station('El-Maasara', 3, 'Line 1'),
+    Station('Tora El-Asmant', 3, 'Line 1'),
+    Station('Kozzika', 3, 'Line 1'),
+    Station('Tora El-Balad', 3, 'Line 1'),
+    Station('Sakanat El-Maadi', 3, 'Line 1'),
+    Station('Maadi', 3, 'Line 1'),
+    Station('Hadayek El-Maadi', 3, 'Line 1'),
+    Station('Dar El-Salam', 3, 'Line 1'),
+    Station('El-Zahraa', 3, 'Line 1'),
+    Station('Mar Girgis', 3, 'Line 1'),
+    Station('El-Malek El-Saleh', 3, 'Line 1'),
+    Station('Al-Sayeda Zeinab', 3, 'Line 1'),
+    Station('Saad Zaghloul', 3, 'Line 1'),
+    Station('Sadat', 3, 'Line 1'),
+    Station('Nasser', 3, 'Line 1'),
+    Station('Orabi', 3, 'Line 1'),
+    Station('Al-Shohadaa', 3, 'Line 1'),
+    Station('Ghamra', 3, 'Line 1'),
+    Station('El-Demerdash', 3, 'Line 1'),
+    Station('Manshiet El-Sadr', 3, 'Line 1'),
+    Station('Kobri El-Qobba', 3, 'Line 1'),
+    Station('Hammamat El-Qobba', 3, 'Line 1'),
+    Station('Saray El-Qobba', 3, 'Line 1'),
+    Station('Hadayeq El-Zaitoun', 3, 'Line 1'),
+    Station('Helmeyet El-Zaitoun', 3, 'Line 1'),
+    Station('El-Matareyya', 3, 'Line 1'),
+    Station('Ain Shams', 3, 'Line 1'),
+    Station('Ezbet El-Nakhl', 3, 'Line 1'),
+    Station('El-Marg', 3, 'Line 1'),
+    // Line 2
+    Station('Shubra El Kheima', 3, 'Line 2'),
+    Station('Kolleyyet El-Zeraa', 3, 'Line 2'),
+    Station('Mezallat', 3, 'Line 2'),
+    Station('Khalafawy', 3, 'Line 2'),
+    Station('St. Teresa', 3, 'Line 2'),
+    Station('Rod El-Farag', 3, 'Line 2'),
+    Station('Massara', 3, 'Line 2'),
+    Station('Al-Shohadaa', 3, 'Line 2'),
+    Station('Attaba', 3, 'Line 2'),
+    Station('Mohamed Naguib', 3, 'Line 2'),
+    Station('Sadat', 3, 'Line 2'),
+    Station('Opera', 3, 'Line 2'),
+    Station('Dokki', 3, 'Line 2'),
+    Station('El Bohooth', 3, 'Line 2'),
+    Station('Cairo University', 3, 'Line 2'),
+    Station('Faisal', 3, 'Line 2'),
+    Station('Giza', 3, 'Line 2'),
+    Station('Omm El Misryeen', 3, 'Line 2'),
+    Station('Sakiat Mekki', 3, 'Line 2'),
+    Station('El Mounib', 3, 'Line 2'),
+    // Line 3
+    Station('Adly Mansour', 3, 'Line 3'),
+    Station('El Haykestep', 3, 'Line 3'),
+    Station('Omar Ibn El Khattab', 3, 'Line 3'),
+    Station('Quba', 3, 'Line 3'),
+    Station('Hesham Barakat', 3, 'Line 3'),
+    Station('El Nozha', 3, 'Line 3'),
+    Station('Nadi El Shams', 3, 'Line 3'),
+    Station('Alf Maskan', 3, 'Line 3'),
+    Station('Heliopolis', 3, 'Line 3'),
+    Station('Haroun', 3, 'Line 3'),
+    Station('Al Ahram', 3, 'Line 3'),
+    Station('Koleyet El Banat', 3, 'Line 3'),
+    Station('Stadium', 3, 'Line 3'),
+    Station('Fair Zone', 3, 'Line 3'),
+    Station('Abbassia', 3, 'Line 3'),
+    Station('Abdou Pasha', 3, 'Line 3'),
+    Station('Bab El Shaaria', 3, 'Line 3'),
+    Station('Attaba', 3, 'Line 3'),
+    Station('Nasser', 3, 'Line 3'),
+    Station('Maspero', 3, 'Line 3'),
+    Station('Safaa Hegazy', 3, 'Line 3'),
+    Station('Kit Kat', 3, 'Line 3'),
+    Station('Sudan', 3, 'Line 3'),
+    Station('Imbaba', 3, 'Line 3'),
+    Station('El Bohooth', 3, 'Line 3'),
+    Station('Cairo University', 3, 'Line 3'),
   ];
 
   final List<String> ticketTypes = [
@@ -243,304 +377,288 @@ class TicketPageState extends State<TicketPage> {
     if (fromStation == null || toStation == null) return 0.0;
 
     // Base price for a journey
-    double basePrice = 2.50;
+    double basePrice = 5.0; // EGP 5 for a single journey
 
     // Multiply base price based on ticket type
     switch (type) {
-      case '1-Day Pass':
-        return basePrice * 2.5;
-      case '3-Day Pass':
-        return basePrice * 6;
-      case '7-Day Pass':
-        return basePrice * 12;
-      default: // Single Journey
+      case 'Single Journey':
         return basePrice;
-    }
-  }
-
-  void updatePrice() {
-    if (selectedTicketType != null) {
-      setState(() {
-        ticketPrice = calculateTicketPrice(selectedTicketType!);
-      });
+      case '1-Day Pass':
+        return basePrice * 4; // EGP 20
+      case '3-Day Pass':
+        return basePrice * 10; // EGP 50
+      case '7-Day Pass':
+        return basePrice * 20; // EGP 100
+      default:
+        return basePrice;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final isPeakHour = isCurrentlyPeakHours();
-
     return Scaffold(
       backgroundColor: const Color.fromRGBO(33, 33, 33, 1),
-      body: Stack(
-        children: [
-          SafeArea(
-            child: Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.train, color: Colors.white, size: 28),
-                      const SizedBox(width: 12),
-                      const Text(
-                        'Metro Ticket',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Spacer(),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
-                        ),
-                        decoration: BoxDecoration(
-                          color: isPeakHour
-                              ? Colors.orange.withOpacity(0.2)
-                              : Colors.green.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Text(
-                          isPeakHour ? 'Peak Hours' : 'Off-Peak',
-                          style: TextStyle(
-                            color: isPeakHour
-                                ? Colors.orange[300]
-                                : Colors.green[300],
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ],
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(33, 33, 33, 1),
+        title: const Text(
+          'Buy Ticket',
+          style: TextStyle(color: Colors.white),
+        ),
+        elevation: 0,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'From',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
+                  const SizedBox(height: 8),
+                  SearchableDropdown(
+                    label: 'Select Station',
+                    value: fromStation,
+                    items: stations,
+                    onChanged: (station) {
+                      setState(() {
+                        fromStation = station;
+                        if (selectedTicketType != null) {
+                          ticketPrice =
+                              calculateTicketPrice(selectedTicketType!);
+                        }
+                      });
+                    },
+                    isFrom: true,
+                  ),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'To',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  SearchableDropdown(
+                    label: 'Select Station',
+                    value: toStation,
+                    items: stations,
+                    onChanged: (station) {
+                      setState(() {
+                        toStation = station;
+                        if (selectedTicketType != null) {
+                          ticketPrice =
+                              calculateTicketPrice(selectedTicketType!);
+                        }
+                      });
+                    },
+                    isFrom: false,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              const Text(
+                'Select Ticket Type',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
                 ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.4),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Journey Details',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              const SizedBox(height: 20),
-                              SearchableDropdown(
-                                label: 'From',
-                                value: fromStation,
-                                items: stations,
-                                onChanged: (value) {
-                                  setState(() {
-                                    fromStation = value;
-                                    updatePrice();
-                                  });
-                                },
-                                isFrom: true,
-                              ),
-                              if (fromStation != null) ...[
-                                const SizedBox(height: 4),
-                              ],
-                              const SizedBox(height: 16),
-                              SearchableDropdown(
-                                label: 'To',
-                                value: toStation,
-                                items: stations,
-                                onChanged: (value) {
-                                  setState(() {
-                                    toStation = value;
-                                    updatePrice();
-                                  });
-                                },
-                                isFrom: false,
-                              ),
-                            ],
+              ),
+              const SizedBox(height: 16),
+              ...ticketTypes.map((type) => Padding(
+                    padding: const EdgeInsets.only(bottom: 12.0),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          selectedTicketType = type;
+                          ticketPrice = calculateTicketPrice(type);
+                        });
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: selectedTicketType == type
+                              ? Colors.blue.withOpacity(0.2)
+                              : Colors.white.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: selectedTicketType == type
+                                ? Colors.blue
+                                : Colors.transparent,
+                            width: 2,
                           ),
                         ),
-                        const SizedBox(height: 20),
-                        Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.4),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Ticket Type',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 24,
+                              height: 24,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: selectedTicketType == type
+                                      ? Colors.blue
+                                      : Colors.white70,
+                                  width: 2,
                                 ),
                               ),
-                              const SizedBox(height: 20),
-                              Wrap(
-                                spacing: 8,
-                                runSpacing: 8,
-                                children: ticketTypes.map((type) {
-                                  final isSelected = selectedTicketType == type;
-                                  return InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selectedTicketType = type;
-                                        updatePrice();
-                                      });
-                                    },
-                                    child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 16,
-                                        vertical: 8,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: isSelected
-                                            ? Colors.blue
-                                            : Colors.black26,
-                                        borderRadius: BorderRadius.circular(20),
-                                        border: Border.all(
-                                          color: isSelected
-                                              ? Colors.blue
-                                              : Colors.white24,
-                                        ),
-                                      ),
-                                      child: Text(
-                                        type,
-                                        style: TextStyle(
-                                          color: isSelected
-                                              ? Colors.white
-                                              : Colors.white70,
-                                          fontWeight: isSelected
-                                              ? FontWeight.bold
-                                              : FontWeight.normal,
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                }).toList(),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.4),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Fare Details',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              child: selectedTicketType == type
+                                  ? const Icon(
+                                      Icons.check,
+                                      color: Colors.blue,
+                                      size: 16,
+                                    )
+                                  : null,
+                            ),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
-                                    'Total Fare',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
                                   Text(
-                                    '\$${ticketPrice.toStringAsFixed(2)}',
+                                    type,
                                     style: const TextStyle(
                                       color: Colors.white,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    'EGP ${calculateTicketPrice(type).toStringAsFixed(0)}',
+                                    style: TextStyle(
+                                      color: Colors.white.withOpacity(0.7),
+                                      fontSize: 14,
                                     ),
                                   ),
                                 ],
                               ),
-                              if (fromStation != null && toStation != null) ...[
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Valid for travel between ${fromStation!.name} and ${toStation!.name}',
-                                  style: const TextStyle(
-                                    color: Colors.white70,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                if (selectedTicketType != null &&
-                                    selectedTicketType != 'Single Journey')
-                                  Text(
-                                    'Valid for ${selectedTicketType!.split(" ")[0]} of unlimited travel',
-                                    style: const TextStyle(
-                                      color: Colors.white70,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                              ],
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 32),
-                        SizedBox(
-                          width: double.infinity,
-                          height: 54,
-                          child: ElevatedButton(
-                            onPressed: (fromStation != null &&
-                                    toStation != null &&
-                                    selectedTicketType != null)
-                                ? () {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text(
-                                            'Ticket Purchased! Tap your phone at the gate to enter.'),
-                                        backgroundColor: Colors.green,
-                                      ),
-                                    );
-                                  }
-                                : null,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
                             ),
-                            child: const Text(
-                              'Purchase Ticket',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromRGBO(255, 255, 255, 1)),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+              if (fromStation != null &&
+                  toStation != null &&
+                  selectedTicketType != null) ...[
+                const SizedBox(height: 24),
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Journey Summary',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Row(
+                        children: [
+                          const Icon(Icons.location_on_outlined,
+                              color: Colors.blue),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              fromStation!.name,
+                              style: const TextStyle(color: Colors.white),
                             ),
                           ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          const Icon(Icons.location_on, color: Colors.blue),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              toStation!.name,
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Total Price',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text(
+                            'EGP ${ticketPrice.toStringAsFixed(0)}',
+                            style: const TextStyle(
+                              color: Colors.blue,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 24),
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PaymentPage(
+                            amount: ticketPrice,
+                            paymentType: 'ticket',
+                            description: selectedTicketType!,
+                          ),
                         ),
-                      ],
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text(
+                      'Proceed to Payment',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
               ],
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

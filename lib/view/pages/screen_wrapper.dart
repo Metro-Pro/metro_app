@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:metro_app/view/pages/home.dart';
 import 'package:metro_app/view/pages/metro_line.dart';
-import 'package:metro_app/view/pages/payment.dart';
 import 'package:metro_app/view/pages/subscription.dart';
 import 'package:metro_app/view/pages/ticket.dart';
 
@@ -16,7 +15,6 @@ class _ScreenWrapperState extends State<ScreenWrapper> {
   List<Widget> pages = [
     const HomeScreen(),
     const SubscriptionPage(),
-    const PaymentPage(amount: 0.0),
     const TicketPage(),
     const MetroLinePage()
   ];
@@ -46,10 +44,6 @@ class _ScreenWrapperState extends State<ScreenWrapper> {
           BottomNavigationBarItem(
             icon: Icon(Icons.subscriptions_rounded),
             label: 'subscription',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.payment_rounded),
-            label: 'payment',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.card_membership_outlined),

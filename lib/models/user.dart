@@ -1,59 +1,54 @@
 class User {
-  final String id;
   final String name;
   final String email;
   final String phone;
-  final String password;
+  final String? profilePicture;
 
-  User(
-      {required this.id,
-      required this.name,
-      required this.email,
-      required this.phone,
-      required this.password});
-
-  static User fromJson(Map<String, dynamic> json) {
-    return User(
-      id: json['id'],
-      name: json['name'],
-      email: json['email'],
-      phone: json['phone'],
-      password: json['password'],
-    );
-  }
+  User({
+    required this.name,
+    required this.email,
+    required this.phone,
+    this.profilePicture,
+  });
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
       'name': name,
       'email': email,
       'phone': phone,
-      'password': password,
+      'profilePicture': profilePicture,
     };
+  }
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      name: json['name'] as String,
+      email: json['email'] as String,
+      phone: json['phone'] as String,
+      profilePicture: json['profilePicture'] as String?,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     return other is User &&
-        other.id == id &&
         other.name == name &&
         other.email == email &&
         other.phone == phone &&
-        other.password == password;
+        other.profilePicture == profilePicture;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-        name.hashCode ^
+    return name.hashCode ^
         email.hashCode ^
         phone.hashCode ^
-        password.hashCode;
+        profilePicture.hashCode;
   }
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, email: $email, phone: $phone)';
+    return 'User(name: $name, email: $email, phone: $phone)';
   }
 }

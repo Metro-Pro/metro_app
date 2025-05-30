@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Helwan",
+    "latitude": 29.8447,
+    "longitude": 31.3333,
+    "googleMapsLink": "https://goo.gl/maps/your-helwan-station-link"
+  },
+  {
+    "name": "El Marg",
+    "latitude": 30.1667,
+    "longitude": 31.3333,
+    "googleMapsLink": "https://goo.gl/maps/your-el-marg-station-link"
+  },
+  {
+    "name": "Shubra El Kheima",
+    "latitude": 30.1333,
+    "longitude": 31.25,
+    "googleMapsLink": "https://goo.gl/maps/your-shubra-station-link"
+  },
+  {
+    "name": "Sadat",
+    "latitude": 30.0444,
+    "longitude": 31.2357,
+    "googleMapsLink": "https://goo.gl/maps/your-sadat-station-link"
+  },
+  {
+    "name": "Nasser",
+    "latitude": 30.05,
+    "longitude": 31.2333,
+    "googleMapsLink": "https://goo.gl/maps/your-nasser-station-link"
+  }
+]

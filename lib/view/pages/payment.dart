@@ -3,7 +3,15 @@ import 'package:flutter/services.dart';
 
 class PaymentPage extends StatefulWidget {
   final double amount;
-  const PaymentPage({super.key, required this.amount});
+  final String paymentType; // 'subscription' or 'ticket'
+  final String? description; // Optional description of what's being paid for
+
+  const PaymentPage({
+    super.key,
+    required this.amount,
+    required this.paymentType,
+    this.description,
+  });
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
@@ -38,8 +46,12 @@ class _PaymentPageState extends State<PaymentPage> {
       await Future.delayed(const Duration(seconds: 2));
       if (!mounted) return;
 
+      String successMessage = widget.paymentType == 'subscription'
+          ? 'Subscription activated successfully!'
+          : 'Ticket purchased successfully!';
+
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Payment successful!')),
+        SnackBar(content: Text(successMessage)),
       );
       Navigator.pop(context, true);
     } catch (e) {
@@ -71,9 +83,11 @@ class _PaymentPageState extends State<PaymentPage> {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
-          'Payment',
-          style: TextStyle(
+        title: Text(
+          widget.paymentType == 'subscription'
+              ? 'Subscription Payment'
+              : 'Ticket Payment',
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -107,13 +121,25 @@ class _PaymentPageState extends State<PaymentPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Total Amount',
-                      style: TextStyle(
+                    Text(
+                      widget.paymentType == 'subscription'
+                          ? 'Subscription Amount'
+                          : 'Ticket Amount',
+                      style: const TextStyle(
                         color: Colors.white70,
                         fontSize: 16,
                       ),
                     ),
+                    if (widget.description != null) ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        widget.description!,
+                        style: const TextStyle(
+                          color: Colors.white70,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
                     const SizedBox(height: 8),
                     Text(
                       '\$${widget.amount.toStringAsFixed(2)}',

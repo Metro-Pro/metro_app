@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:metro_app/view/pages/payment.dart';
 
-class SubscriptionPage extends StatelessWidget {
+class SubscriptionPage extends StatefulWidget {
   const SubscriptionPage({super.key});
 
+  @override
+  State<SubscriptionPage> createState() => _SubscriptionPageState();
+}
+
+class _SubscriptionPageState extends State<SubscriptionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,39 +38,43 @@ class SubscriptionPage extends StatelessWidget {
               const SizedBox(height: 20),
               _buildSubscriptionCard(
                 title: 'Monthly Pass',
-                price: '\$49.99',
+                price: 'EGP 200',
                 features: [
-                  'Unlimited metro rides',
-                  'Priority boarding',
-                  'Free transfers',
-                  '24/7 support',
+                  'Unlimited metro rides for 30 days',
+                  'Valid on all metro lines',
+                  'Free transfers between lines',
+                  'Priority boarding during peak hours',
+                  '24/7 customer support',
                 ],
                 isPopular: false,
               ),
               const SizedBox(height: 16),
               _buildSubscriptionCard(
                 title: 'Quarterly Pass',
-                price: '\$129.99',
+                price: 'EGP 500',
                 features: [
-                  'Unlimited metro rides',
-                  'Priority boarding',
-                  'Free transfers',
-                  '24/7 support',
-                  '10% discount on food',
+                  'Unlimited metro rides for 90 days',
+                  'Valid on all metro lines',
+                  'Free transfers between lines',
+                  'Priority boarding during peak hours',
+                  '24/7 customer support',
+                  '10% discount on food at metro stations',
                 ],
                 isPopular: true,
               ),
               const SizedBox(height: 16),
               _buildSubscriptionCard(
                 title: 'Annual Pass',
-                price: '\$399.99',
+                price: 'EGP 1,800',
                 features: [
-                  'Unlimited metro rides',
-                  'Priority boarding',
-                  'Free transfers',
-                  '24/7 support',
-                  '20% discount on food',
-                  'Free parking',
+                  'Unlimited metro rides for 365 days',
+                  'Valid on all metro lines',
+                  'Free transfers between lines',
+                  'Priority boarding during peak hours',
+                  '24/7 customer support',
+                  '20% discount on food at metro stations',
+                  'Free parking at selected stations',
+                  'Exclusive access to metro events',
                 ],
                 isPopular: false,
               ),
@@ -81,6 +91,10 @@ class SubscriptionPage extends StatelessWidget {
     required List<String> features,
     required bool isPopular,
   }) {
+    // Extract the numeric price from the string (remove EGP and convert to double)
+    final double amount =
+        double.parse(price.replaceAll('EGP ', '').replaceAll(',', ''));
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.1),
@@ -136,15 +150,17 @@ class SubscriptionPage extends StatelessWidget {
                     children: [
                       const Icon(
                         Icons.check_circle,
-                        color: Colors.green,
+                        color: Colors.blue,
                         size: 20,
                       ),
                       const SizedBox(width: 8),
-                      Text(
-                        feature,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
+                      Expanded(
+                        child: Text(
+                          feature,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     ],
@@ -155,7 +171,16 @@ class SubscriptionPage extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // TODO: Implement subscription purchase
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PaymentPage(
+                        amount: amount,
+                        paymentType: 'subscription',
+                        description: title,
+                      ),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: isPopular ? Colors.blue : Colors.grey[800],
