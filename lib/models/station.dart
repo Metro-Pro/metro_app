@@ -1,86 +1,83 @@
-import 'package:flutter/foundation.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
+import 'package:latlong2/latlong.dart';
 
 class Station {
   final String id;
   final String name;
-  final String code;
-  final double latitude;
-  final double longitude;
-  final List<String> lineIds;
-  final bool isActive;
-  final String? address;
-  final String? description;
-  final Map<String, dynamic>?
-      facilities; // e.g., {'parking': true, 'wheelchair': true}
-  final List<String>? connectingStations;
+  final LatLng location;
+  final String lineNumber;
   final String googleMapsLink;
 
   Station({
     required this.id,
     required this.name,
-    required this.code,
-    required this.latitude,
-    required this.longitude,
-    required this.lineIds,
-    required this.isActive,
-    this.address,
-    this.description,
-    this.facilities,
-    this.connectingStations,
+    required this.location,
+    required this.lineNumber,
     required this.googleMapsLink,
   });
 
-  factory Station.fromJson(Map<String, dynamic> json) {
+  @override
+  String toString() {
+    return 'Station(id: $id, name: $name, location: $location, lineNumber: $lineNumber, googleMapsLink: $googleMapsLink)';
+  }
+
+  Station copyWith({
+    String? id,
+    String? name,
+    LatLng? location,
+    String? lineNumber,
+    String? googleMapsLink,
+  }) {
     return Station(
-      id: json['id'],
-      name: json['name'] as String,
-      code: json['code'] as String,
-      latitude: json['latitude'] as double,
-      longitude: json['longitude'] as double,
-      lineIds: List<String>.from(json['lineIds']),
-      isActive: json['isActive'],
-      address: json['address'],
-      description: json['description'],
-      facilities: json['facilities'],
-      connectingStations: json['connectingStations'] != null
-          ? List<String>.from(json['connectingStations'])
-          : null,
-      googleMapsLink: json['googleMapsLink'] as String,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      location: location ?? this.location,
+      lineNumber: lineNumber ?? this.lineNumber,
+      googleMapsLink: googleMapsLink ?? this.googleMapsLink,
     );
   }
 
-  Map<String, dynamic> toJson() {
-    return {
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
       'id': id,
       'name': name,
-      'code': code,
-      'latitude': latitude,
-      'longitude': longitude,
-      'lineIds': lineIds,
-      'isActive': isActive,
-      'address': address,
-      'description': description,
-      'facilities': facilities,
-      'connectingStations': connectingStations,
+      'location': {
+        'latitude': location.latitude,
+        'longitude': location.longitude
+      },
+      'lineNumber': lineNumber,
       'googleMapsLink': googleMapsLink,
     };
   }
 
+  factory Station.fromMap(Map<String, dynamic> map) {
+    return Station(
+      id: map['id'].toString(),
+      name: map['station_name'] as String,
+      location: LatLng(
+        map['latitude'] as double,
+        map['longitude'] as double,
+      ),
+      lineNumber: map['line_number'].toString(),
+      googleMapsLink: map['google_maps_link'] as String,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Station.fromJson(String source) =>
+      Station.fromMap(json.decode(source) as Map<String, dynamic>);
+
   @override
-  bool operator ==(Object other) {
+  bool operator ==(covariant Station other) {
     if (identical(this, other)) return true;
-    return other is Station &&
-        other.id == id &&
+
+    return other.id == id &&
         other.name == name &&
-        other.code == code &&
-        other.latitude == latitude &&
-        other.longitude == longitude &&
-        listEquals(other.lineIds, lineIds) &&
-        other.isActive == isActive &&
-        other.address == address &&
-        other.description == description &&
-        mapEquals(other.facilities, facilities) &&
-        listEquals(other.connectingStations, connectingStations) &&
+        other.location == location &&
+        other.lineNumber == lineNumber &&
         other.googleMapsLink == googleMapsLink;
   }
 
@@ -88,20 +85,8 @@ class Station {
   int get hashCode {
     return id.hashCode ^
         name.hashCode ^
-        code.hashCode ^
-        latitude.hashCode ^
-        longitude.hashCode ^
-        lineIds.hashCode ^
-        isActive.hashCode ^
-        address.hashCode ^
-        description.hashCode ^
-        facilities.hashCode ^
-        connectingStations.hashCode ^
+        location.hashCode ^
+        lineNumber.hashCode ^
         googleMapsLink.hashCode;
-  }
-
-  @override
-  String toString() {
-    return 'Station(id: $id, name: $name, code: $code, isActive: $isActive)';
   }
 }
