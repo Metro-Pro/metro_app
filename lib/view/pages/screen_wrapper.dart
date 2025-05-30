@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:metro_app/view/pages/home_page.dart';
 import 'package:metro_app/view/pages/metro_line.dart';
-import 'package:metro_app/view/pages/payment.dart';
+import 'package:metro_app/view/pages/subscription.dart';
 import 'package:metro_app/view/pages/ticket.dart';
 
 class ScreenWrapper extends StatefulWidget {
@@ -34,17 +34,16 @@ class _ScreenWrapperState extends State<ScreenWrapper> {
         },
         backgroundColor: const Color.fromRGBO(33, 33, 33, 1.0),
         type: BottomNavigationBarType.fixed,
-        selectedItemColor:
-            Colors.white, // White color for selected label and icon
-        unselectedItemColor: Colors.grey, // Grey for unselected label and icon
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_rounded),
             label: 'home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.payment_rounded),
-            label: 'payment',
+            icon: Icon(Icons.subscriptions_rounded),
+            label: 'subscription',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.card_membership_outlined),
