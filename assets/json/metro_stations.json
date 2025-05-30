@@ -1,0 +1,625 @@
+[
+  {
+    "station_name": "Helwan",
+    "line_number": 1,
+    "latitude": 29.848889,
+    "longitude": 31.334167,
+    "google_maps_link": "https://www.google.com/maps/search/Helwan"
+  },
+  {
+    "station_name": "Ain Helwan",
+    "line_number": 1,
+    "latitude": 29.862778,
+    "longitude": 31.325,
+    "google_maps_link": "https://www.google.com/maps/search/Ain+Helwan"
+  },
+  {
+    "station_name": "Helwan University metro station",
+    "line_number": 1,
+    "latitude": 29.868889,
+    "longitude": 31.320278,
+    "google_maps_link": "https://www.google.com/maps/search/Helwan+University+metro+station"
+  },
+  {
+    "station_name": "Wadi Hof",
+    "line_number": 1,
+    "latitude": 29.879444,
+    "longitude": 31.313333,
+    "google_maps_link": "https://www.google.com/maps/search/Wadi+Hof"
+  },
+  {
+    "station_name": "Hadayek Helwan",
+    "line_number": 1,
+    "latitude": 29.897222,
+    "longitude": 31.304167,
+    "google_maps_link": "https://www.google.com/maps/search/Hadayek+Helwan"
+  },
+  {
+    "station_name": "El-Maasara",
+    "line_number": 1,
+    "latitude": 29.906111,
+    "longitude": 31.299722,
+    "google_maps_link": "https://www.google.com/maps/search/El-Maasara"
+  },
+  {
+    "station_name": "Tora El-Asmant",
+    "line_number": 1,
+    "latitude": 29.925833,
+    "longitude": 31.287778,
+    "google_maps_link": "https://www.google.com/maps/search/Tora+El-Asmant"
+  },
+  {
+    "station_name": "Kozzika",
+    "line_number": 1,
+    "latitude": 29.936111,
+    "longitude": 31.281667,
+    "google_maps_link": "https://www.google.com/maps/search/Kozzika"
+  },
+  {
+    "station_name": "Tora El-Balad",
+    "line_number": 1,
+    "latitude": 29.946389,
+    "longitude": 31.273611,
+    "google_maps_link": "https://www.google.com/maps/search/Tora+El-Balad"
+  },
+  {
+    "station_name": "Sakanat El-Maadi",
+    "line_number": 1,
+    "latitude": 29.952778,
+    "longitude": 31.263333,
+    "google_maps_link": "https://www.google.com/maps/search/Sakanat+El-Maadi"
+  },
+  {
+    "station_name": "Maadi",
+    "line_number": 1,
+    "latitude": 29.959722,
+    "longitude": 31.258056,
+    "google_maps_link": "https://www.google.com/maps/search/Maadi"
+  },
+  {
+    "station_name": "Hadayek El-Maadi",
+    "line_number": 1,
+    "latitude": 29.97,
+    "longitude": 31.250556,
+    "google_maps_link": "https://www.google.com/maps/search/Hadayek+El-Maadi"
+  },
+  {
+    "station_name": "Dar El-Salam",
+    "line_number": 1,
+    "latitude": 29.981944,
+    "longitude": 31.242222,
+    "google_maps_link": "https://www.google.com/maps/search/Dar+El-Salam"
+  },
+  {
+    "station_name": "El-Zahraa'",
+    "line_number": 1,
+    "latitude": 29.995278,
+    "longitude": 31.231667,
+    "google_maps_link": "https://www.google.com/maps/search/El-Zahraa%27"
+  },
+  {
+    "station_name": "Mar Girgis",
+    "line_number": 1,
+    "latitude": 30.005833,
+    "longitude": 31.229444,
+    "google_maps_link": "https://www.google.com/maps/search/Mar+Girgis"
+  },
+  {
+    "station_name": "El-Malek El-Saleh",
+    "line_number": 1,
+    "latitude": 30.016944,
+    "longitude": 31.230833,
+    "google_maps_link": "https://www.google.com/maps/search/El-Malek+El-Saleh"
+  },
+  {
+    "station_name": "Al-Sayeda Zeinab",
+    "line_number": 1,
+    "latitude": 30.029167,
+    "longitude": 31.235278,
+    "google_maps_link": "https://www.google.com/maps/search/Al-Sayeda+Zeinab"
+  },
+  {
+    "station_name": "Saad Zaghloul",
+    "line_number": 1,
+    "latitude": 30.036667,
+    "longitude": 31.238056,
+    "google_maps_link": "https://www.google.com/maps/search/Saad+Zaghloul"
+  },
+  {
+    "station_name": "Sadat",
+    "line_number": 1,
+    "latitude": 30.044444,
+    "longitude": 31.235556,
+    "google_maps_link": "https://www.google.com/maps/search/Sadat"
+  },
+  {
+    "station_name": "Nasser",
+    "line_number": 1,
+    "latitude": 30.053611,
+    "longitude": 31.238889,
+    "google_maps_link": "https://www.google.com/maps/search/Nasser"
+  },
+  {
+    "station_name": "Orabi",
+    "line_number": 1,
+    "latitude": 30.0575,
+    "longitude": 31.2425,
+    "google_maps_link": "https://www.google.com/maps/search/Orabi"
+  },
+  {
+    "station_name": "Al-Shohadaa",
+    "line_number": 1,
+    "latitude": 30.061944,
+    "longitude": 31.246111,
+    "google_maps_link": "https://www.google.com/maps/search/Al-Shohadaa"
+  },
+  {
+    "station_name": "Ghamra",
+    "line_number": 1,
+    "latitude": 30.068889,
+    "longitude": 31.264722,
+    "google_maps_link": "https://www.google.com/maps/search/Ghamra"
+  },
+  {
+    "station_name": "El-Demerdash",
+    "line_number": 1,
+    "latitude": 30.077222,
+    "longitude": 31.277778,
+    "google_maps_link": "https://www.google.com/maps/search/El-Demerdash"
+  },
+  {
+    "station_name": "Manshiet El-Sadr",
+    "line_number": 1,
+    "latitude": 30.082222,
+    "longitude": 31.287778,
+    "google_maps_link": "https://www.google.com/maps/search/Manshiet+El-Sadr"
+  },
+  {
+    "station_name": "Kobri El-Qobba",
+    "line_number": 1,
+    "latitude": 30.086944,
+    "longitude": 31.293889,
+    "google_maps_link": "https://www.google.com/maps/search/Kobri+El-Qobba"
+  },
+  {
+    "station_name": "Hammamat El-Qobba",
+    "line_number": 1,
+    "latitude": 30.090278,
+    "longitude": 31.298056,
+    "google_maps_link": "https://www.google.com/maps/search/Hammamat+El-Qobba"
+  },
+  {
+    "station_name": "Saray El-Qobba",
+    "line_number": 1,
+    "latitude": 30.098056,
+    "longitude": 31.304722,
+    "google_maps_link": "https://www.google.com/maps/search/Saray+El-Qobba"
+  },
+  {
+    "station_name": "Hadayeq El-Zaitoun",
+    "line_number": 1,
+    "latitude": 30.105278,
+    "longitude": 31.31,
+    "google_maps_link": "https://www.google.com/maps/search/Hadayeq+El-Zaitoun"
+  },
+  {
+    "station_name": "Helmeyet El-Zaitoun",
+    "line_number": 1,
+    "latitude": 30.114444,
+    "longitude": 31.313889,
+    "google_maps_link": "https://www.google.com/maps/search/Helmeyet+El-Zaitoun"
+  },
+  {
+    "station_name": "El-Matareyya",
+    "line_number": 1,
+    "latitude": 30.121389,
+    "longitude": 31.313889,
+    "google_maps_link": "https://www.google.com/maps/search/El-Matareyya"
+  },
+  {
+    "station_name": "Ain Shams",
+    "line_number": 1,
+    "latitude": 30.131111,
+    "longitude": 31.319167,
+    "google_maps_link": "https://www.google.com/maps/search/Ain+Shams"
+  },
+  {
+    "station_name": "Ezbet El-Nakhl",
+    "line_number": 1,
+    "latitude": 30.139167,
+    "longitude": 31.324444,
+    "google_maps_link": "https://www.google.com/maps/search/Ezbet+El-Nakhl"
+  },
+  {
+    "station_name": "El-Marg",
+    "line_number": 1,
+    "latitude": 30.152222,
+    "longitude": 31.335556,
+    "google_maps_link": "https://www.google.com/maps/search/El-Marg"
+  },
+  {
+    "station_name": "New El-Marg",
+    "line_number": 1,
+    "latitude": 30.163333,
+    "longitude": 31.338333,
+    "google_maps_link": "https://www.google.com/maps/search/New+El-Marg"
+  },
+  {
+    "station_name": "El-Mounib",
+    "line_number": 2,
+    "latitude": 29.981389,
+    "longitude": 31.211944,
+    "google_maps_link": "https://www.google.com/maps/search/El-Mounib"
+  },
+  {
+    "station_name": "Sakiat Mekky",
+    "line_number": 2,
+    "latitude": 29.995556,
+    "longitude": 31.208611,
+    "google_maps_link": "https://www.google.com/maps/search/Sakiat+Mekky"
+  },
+  {
+    "station_name": "Omm El-Masryeen",
+    "line_number": 2,
+    "latitude": 30.005278,
+    "longitude": 31.208056,
+    "google_maps_link": "https://www.google.com/maps/search/Omm+El-Masryeen"
+  },
+  {
+    "station_name": "El Giza",
+    "line_number": 2,
+    "latitude": 30.010556,
+    "longitude": 31.206944,
+    "google_maps_link": "https://www.google.com/maps/search/El+Giza"
+  },
+  {
+    "station_name": "Faisal",
+    "line_number": 2,
+    "latitude": 30.017222,
+    "longitude": 31.203889,
+    "google_maps_link": "https://www.google.com/maps/search/Faisal"
+  },
+  {
+    "station_name": "Cairo University",
+    "line_number": 2,
+    "latitude": 30.026111,
+    "longitude": 31.201111,
+    "google_maps_link": "https://www.google.com/maps/search/Cairo+University"
+  },
+  {
+    "station_name": "El Bohoth",
+    "line_number": 2,
+    "latitude": 30.035833,
+    "longitude": 31.200278,
+    "google_maps_link": "https://www.google.com/maps/search/El+Bohoth"
+  },
+  {
+    "station_name": "Dokki",
+    "line_number": 2,
+    "latitude": 30.038333,
+    "longitude": 31.211944,
+    "google_maps_link": "https://www.google.com/maps/search/Dokki"
+  },
+  {
+    "station_name": "Opera",
+    "line_number": 2,
+    "latitude": 30.041944,
+    "longitude": 31.225278,
+    "google_maps_link": "https://www.google.com/maps/search/Opera"
+  },
+  {
+    "station_name": "Sadat",
+    "line_number": 2,
+    "latitude": 30.044444,
+    "longitude": 31.235556,
+    "google_maps_link": "https://www.google.com/maps/search/Sadat"
+  },
+  {
+    "station_name": "Mohamed Naguib",
+    "line_number": 2,
+    "latitude": 30.045278,
+    "longitude": 31.244167,
+    "google_maps_link": "https://www.google.com/maps/search/Mohamed+Naguib"
+  },
+  {
+    "station_name": "Attaba",
+    "line_number": 2,
+    "latitude": 30.0525,
+    "longitude": 31.246944,
+    "google_maps_link": "https://www.google.com/maps/search/Attaba"
+  },
+  {
+    "station_name": "Al-Shohadaa",
+    "line_number": 2,
+    "latitude": 30.061944,
+    "longitude": 31.246111,
+    "google_maps_link": "https://www.google.com/maps/search/Al-Shohadaa"
+  },
+  {
+    "station_name": "Masarra",
+    "line_number": 2,
+    "latitude": 30.071111,
+    "longitude": 31.245,
+    "google_maps_link": "https://www.google.com/maps/search/Masarra"
+  },
+  {
+    "station_name": "Road El-Farag",
+    "line_number": 2,
+    "latitude": 30.080556,
+    "longitude": 31.245556,
+    "google_maps_link": "https://www.google.com/maps/search/Road+El-Farag"
+  },
+  {
+    "station_name": "St. Teresa",
+    "line_number": 2,
+    "latitude": 30.088333,
+    "longitude": 31.245556,
+    "google_maps_link": "https://www.google.com/maps/search/St.+Teresa"
+  },
+  {
+    "station_name": "Khalafawy",
+    "line_number": 2,
+    "latitude": 30.098056,
+    "longitude": 31.245278,
+    "google_maps_link": "https://www.google.com/maps/search/Khalafawy"
+  },
+  {
+    "station_name": "Mezallat",
+    "line_number": 2,
+    "latitude": 30.105,
+    "longitude": 31.246667,
+    "google_maps_link": "https://www.google.com/maps/search/Mezallat"
+  },
+  {
+    "station_name": "Kolleyyet El-Zeraa",
+    "line_number": 2,
+    "latitude": 30.113889,
+    "longitude": 31.248611,
+    "google_maps_link": "https://www.google.com/maps/search/Kolleyyet+El-Zeraa"
+  },
+  {
+    "station_name": "Shubra El-Kheima",
+    "line_number": 2,
+    "latitude": 30.1225,
+    "longitude": 31.244722,
+    "google_maps_link": "https://www.google.com/maps/search/Shubra+El-Kheima"
+  },
+  {
+    "station_name": "Adly Mansour",
+    "line_number": 3,
+    "latitude": 30.146944,
+    "longitude": 31.421389,
+    "google_maps_link": "https://www.google.com/maps/search/Adly+Mansour"
+  },
+  {
+    "station_name": "El Haykestep",
+    "line_number": 3,
+    "latitude": 30.143889,
+    "longitude": 31.404722,
+    "google_maps_link": "https://www.google.com/maps/search/El+Haykestep"
+  },
+  {
+    "station_name": "Omar Ibn El-Khattab",
+    "line_number": 3,
+    "latitude": 30.140556,
+    "longitude": 31.394167,
+    "google_maps_link": "https://www.google.com/maps/search/Omar+Ibn+El-Khattab"
+  },
+  {
+    "station_name": "Qobaa",
+    "line_number": 3,
+    "latitude": 30.134722,
+    "longitude": 31.383889,
+    "google_maps_link": "https://www.google.com/maps/search/Qobaa"
+  },
+  {
+    "station_name": "Hesham Barakat",
+    "line_number": 3,
+    "latitude": 30.131111,
+    "longitude": 31.372778,
+    "google_maps_link": "https://www.google.com/maps/search/Hesham+Barakat"
+  },
+  {
+    "station_name": "El-Nozha",
+    "line_number": 3,
+    "latitude": 30.128333,
+    "longitude": 31.36,
+    "google_maps_link": "https://www.google.com/maps/search/El-Nozha"
+  },
+  {
+    "station_name": "Nadi El-Shams",
+    "line_number": 3,
+    "latitude": 30.122222,
+    "longitude": 31.343889,
+    "google_maps_link": "https://www.google.com/maps/search/Nadi+El-Shams"
+  },
+  {
+    "station_name": "Alf Maskan",
+    "line_number": 3,
+    "latitude": 30.118056,
+    "longitude": 31.339722,
+    "google_maps_link": "https://www.google.com/maps/search/Alf+Maskan"
+  },
+  {
+    "station_name": "Heliopolis Square",
+    "line_number": 3,
+    "latitude": 30.108056,
+    "longitude": 31.338056,
+    "google_maps_link": "https://www.google.com/maps/search/Heliopolis+Square"
+  },
+  {
+    "station_name": "Haroun",
+    "line_number": 3,
+    "latitude": 30.101111,
+    "longitude": 31.332778,
+    "google_maps_link": "https://www.google.com/maps/search/Haroun"
+  },
+  {
+    "station_name": "Al-Ahram",
+    "line_number": 3,
+    "latitude": 30.091389,
+    "longitude": 31.326389,
+    "google_maps_link": "https://www.google.com/maps/search/Al-Ahram"
+  },
+  {
+    "station_name": "Koleyet El-Banat",
+    "line_number": 3,
+    "latitude": 30.083611,
+    "longitude": 31.328889,
+    "google_maps_link": "https://www.google.com/maps/search/Koleyet+El-Banat"
+  },
+  {
+    "station_name": "Stadium",
+    "line_number": 3,
+    "latitude": 30.073056,
+    "longitude": 31.3175,
+    "google_maps_link": "https://www.google.com/maps/search/Stadium"
+  },
+  {
+    "station_name": "Fair Zone",
+    "line_number": 3,
+    "latitude": 30.073333,
+    "longitude": 31.301111,
+    "google_maps_link": "https://www.google.com/maps/search/Fair+Zone"
+  },
+  {
+    "station_name": "Abbassia",
+    "line_number": 3,
+    "latitude": 30.069722,
+    "longitude": 31.280833,
+    "google_maps_link": "https://www.google.com/maps/search/Abbassia"
+  },
+  {
+    "station_name": "Abdou Pasha",
+    "line_number": 3,
+    "latitude": 30.064722,
+    "longitude": 31.274722,
+    "google_maps_link": "https://www.google.com/maps/search/Abdou+Pasha"
+  },
+  {
+    "station_name": "El Geish",
+    "line_number": 3,
+    "latitude": 30.062778,
+    "longitude": 31.267,
+    "google_maps_link": "https://www.google.com/maps/search/El+Geish"
+  },
+  {
+    "station_name": "Bab El Shaaria",
+    "line_number": 3,
+    "latitude": 30.053889,
+    "longitude": 31.256111,
+    "google_maps_link": "https://www.google.com/maps/search/Bab+El+Shaaria"
+  },
+  {
+    "station_name": "Attaba",
+    "line_number": 3,
+    "latitude": 30.0525,
+    "longitude": 31.246944,
+    "google_maps_link": "https://www.google.com/maps/search/Attaba"
+  },
+  {
+    "station_name": "Nasser",
+    "line_number": 3,
+    "latitude": 30.053611,
+    "longitude": 31.238889,
+    "google_maps_link": "https://www.google.com/maps/search/Nasser"
+  },
+  {
+    "station_name": "Maspero",
+    "line_number": 3,
+    "latitude": 30.055556,
+    "longitude": 31.232222,
+    "google_maps_link": "https://www.google.com/maps/search/Maspero"
+  },
+  {
+    "station_name": "Safaa Hegazy",
+    "line_number": 3,
+    "latitude": 30.0625,
+    "longitude": 31.2225,
+    "google_maps_link": "https://www.google.com/maps/search/Safaa+Hegazy"
+  },
+  {
+    "station_name": "Kit Kat",
+    "line_number": 3,
+    "latitude": 30.066667,
+    "longitude": 31.213056,
+    "google_maps_link": "https://www.google.com/maps/search/Kit+Kat"
+  },
+  {
+    "station_name": "Sudan Street",
+    "line_number": 3,
+    "latitude": 30.069722,
+    "longitude": 31.205278,
+    "google_maps_link": "https://www.google.com/maps/search/Sudan+Street"
+  },
+  {
+    "station_name": "Imbaba",
+    "line_number": 3,
+    "latitude": 30.075833,
+    "longitude": 31.2075,
+    "google_maps_link": "https://www.google.com/maps/search/Imbaba"
+  },
+  {
+    "station_name": "El-Bohy",
+    "line_number": 3,
+    "latitude": 30.082222,
+    "longitude": 31.210556,
+    "google_maps_link": "https://www.google.com/maps/search/El-Bohy"
+  },
+  {
+    "station_name": "Al-Qawmeya Al-Arabiya",
+    "line_number": 3,
+    "latitude": 30.093333,
+    "longitude": 31.208889,
+    "google_maps_link": "https://www.google.com/maps/search/Al-Qawmeya+Al-Arabiya"
+  },
+  {
+    "station_name": "Ring Road",
+    "line_number": 3,
+    "latitude": 30.096389,
+    "longitude": 31.199722,
+    "google_maps_link": "https://www.google.com/maps/search/Ring+Road"
+  },
+  {
+    "station_name": "Rod al-Farag Axis",
+    "line_number": 3,
+    "latitude": 30.101944,
+    "longitude": 31.184167,
+    "google_maps_link": "https://www.google.com/maps/search/Rod+al-Farag+Axis"
+  },
+  {
+    "station_name": "El-Tawfikeya",
+    "line_number": 3,
+    "latitude": 30.065278,
+    "longitude": 31.2025,
+    "google_maps_link": "https://www.google.com/maps/search/El-Tawfikeya"
+  },
+  {
+    "station_name": "Wadi El-Nil",
+    "line_number": 3,
+    "latitude": 30.058333,
+    "longitude": 31.201111,
+    "google_maps_link": "https://www.google.com/maps/search/Wadi+El-Nil"
+  },
+  {
+    "station_name": "Gamaat El Dowal Al-Arabiya",
+    "line_number": 3,
+    "latitude": 30.050833,
+    "longitude": 31.199722,
+    "google_maps_link": "https://www.google.com/maps/search/Gamaat+El+Dowal+Al-Arabiya"
+  },
+  {
+    "station_name": "Bulaq El-Dakroor",
+    "line_number": 3,
+    "latitude": 30.036111,
+    "longitude": 31.196389,
+    "google_maps_link": "https://www.google.com/maps/search/Bulaq+El-Dakroor"
+  },
+  {
+    "station_name": "Cairo University",
+    "line_number": 3,
+    "latitude": 30.026111,
+    "longitude": 31.201111,
+    "google_maps_link": "https://www.google.com/maps/search/Cairo+University"
+  }
+]
