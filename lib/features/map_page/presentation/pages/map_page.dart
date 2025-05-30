@@ -1,15 +1,25 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+
 import 'package:metro_app/features/map_page/presentation/utils/map_utils.dart';
 import 'package:metro_app/features/map_page/presentation/widgets/station_dialog.dart';
 import 'package:metro_app/features/map_page/presentation/widgets/zoom_button.dart';
 import 'package:metro_app/models/station.dart';
 
 class MapPage extends StatefulWidget {
-  const MapPage({super.key});
+  LatLng initialLocation;
+  double initialZoom;
+  bool showControls;
+  MapPage({
+    super.key,
+    this.initialLocation = const LatLng(29.93, 31.2),
+    this.initialZoom = 10.2,
+    this.showControls = true,
+  });
 
   @override
   State<MapPage> createState() => _MapPageState();
@@ -104,10 +114,10 @@ class _MapPageState extends State<MapPage> {
           else
             FlutterMap(
               mapController: _mapController,
-              options: const MapOptions(
-                initialCenter: LatLng(29.93, 31.2),
-                initialZoom: 10.2,
-                interactionOptions: InteractionOptions(
+              options: MapOptions(
+                initialCenter: widget.initialLocation,
+                initialZoom: widget.initialZoom,
+                interactionOptions: const InteractionOptions(
                   flags: InteractiveFlag.all,
                 ),
               ),
@@ -190,19 +200,44 @@ class _MapPageState extends State<MapPage> {
               },
               onOpenInGoogleMaps: _handleOpenInGoogleMaps,
             ),
-          Positioned(
-            right: 16,
-            bottom: 20,
-            child: Column(
-              children: [
-                ZoomButton(icon: Icons.add, onPressed: _zoomIn),
-                ZoomButton(
-                  icon: Icons.remove,
-                  onPressed: _zoomOut,
-                )
-              ],
+          if (widget.showControls ?? true)
+            Positioned(
+              right: 16,
+              bottom: 20,
+              child: Column(
+                children: [
+                  ZoomButton(icon: Icons.add, onPressed: _zoomIn),
+                  ZoomButton(
+                    icon: Icons.remove,
+                    onPressed: _zoomOut,
+                  )
+                ],
+              ),
             ),
-          ),
+          if (widget.showControls ?? true)
+            Positioned(
+              top: 16,
+              left: 16,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(Icons.arrow_back_rounded),
+                  color: Colors.black87,
+                  iconSize: 24,
+                ),
+              ),
+            ),
         ],
       ),
     );

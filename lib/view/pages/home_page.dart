@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:metro_app/features/map_page/presentation/pages/map_page.dart';
 import 'package:metro_app/view/pages/profile.dart';
 import 'package:metro_app/view/pages/metro_journey_page.dart';
 
@@ -270,15 +273,67 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(height: 32),
-                Row(
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MapPage()),
+                    );
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Explore the Metro Map',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.white10),
+                        ),
+                        width: double.infinity,
+                        height: 200,
+                        child: Stack(
+                          children: [
+                            FlutterMap(
+                                options: const MapOptions(
+                                  initialCenter: LatLng(29.93, 31.2),
+                                  initialZoom: 10.2,
+                                  interactionOptions: InteractionOptions(
+                                    flags: InteractiveFlag.all,
+                                  ),
+                                ),
+                                children: [
+                                  TileLayer(
+                                    urlTemplate:
+                                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                                    // userAgentPackageName: 'com.example.app',
+                                  ),
+                                ]),
+                            Container(
+                              color: Colors.transparent,
+                              alignment: Alignment.center,
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Row(
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.location_on_rounded,
                       color: Color(0xFF4A90E2),
                       size: 24,
                     ),
-                    const SizedBox(width: 8),
-                    const Text(
+                    SizedBox(width: 8),
+                    Text(
                       'Nearest Station',
                       style: TextStyle(
                         color: Colors.white,
