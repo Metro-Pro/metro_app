@@ -4,9 +4,8 @@ import 'package:metro_app/view/pages/payment.dart';
 class Station {
   final String name;
   final int estimatedWaitMin;
-  final String line;
 
-  const Station(this.name, this.estimatedWaitMin, this.line);
+  const Station(this.name, this.estimatedWaitMin);
 }
 
 class SearchableDropdown extends StatelessWidget {
@@ -52,10 +51,10 @@ class SearchableDropdown extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Icon(
+              const Icon(
                 Icons.location_on,
                 color:
-                    value != null ? _getLineColor(value!.line) : Colors.white70,
+                     Colors.white70,
                 size: 20,
               ),
               const SizedBox(width: 12),
@@ -81,16 +80,7 @@ class SearchableDropdown extends StatelessWidget {
                             value != null ? FontWeight.w500 : FontWeight.normal,
                       ),
                     ),
-                    if (value != null) ...[
-                      const SizedBox(height: 2),
-                      Text(
-                        value!.line,
-                        style: TextStyle(
-                          color: _getLineColor(value!.line),
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
+                    
                   ],
                 ),
               ),
@@ -102,18 +92,6 @@ class SearchableDropdown extends StatelessWidget {
     );
   }
 
-  Color _getLineColor(String line) {
-    switch (line) {
-      case 'Line 1':
-        return Colors.blue;
-      case 'Line 2':
-        return Colors.blue;
-      case 'Line 3':
-        return Colors.blue;
-      default:
-        return Colors.white70;
-    }
-  }
 }
 
 class StationSearchDialog extends StatefulWidget {
@@ -193,29 +171,9 @@ class _StationSearchDialogState extends State<StationSearchDialog> {
                 itemBuilder: (context, index) {
                   final station = filteredStations[index];
                   return ListTile(
-                    leading: Container(
-                      width: 24,
-                      height: 24,
-                      decoration: BoxDecoration(
-                        color: _getLineColor(station.line),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.train,
-                        color: Colors.white,
-                        size: 16,
-                      ),
-                    ),
                     title: Text(
                       station.name,
                       style: const TextStyle(color: Colors.white),
-                    ),
-                    subtitle: Text(
-                      station.line,
-                      style: TextStyle(
-                        color: _getLineColor(station.line),
-                        fontSize: 12,
-                      ),
                     ),
                     onTap: () {
                       widget.onSelect(station);
@@ -231,18 +189,6 @@ class _StationSearchDialogState extends State<StationSearchDialog> {
     );
   }
 
-  Color _getLineColor(String line) {
-    switch (line) {
-      case 'Line 1':
-        return Colors.blue;
-      case 'Line 2':
-        return Colors.blue;
-      case 'Line 3':
-        return Colors.blue;
-      default:
-        return Colors.white70;
-    }
-  }
 
   @override
   void dispose() {
@@ -267,88 +213,88 @@ class TicketPageState extends State<TicketPage> {
   // Cairo Metro stations
   final List<Station> stations = const [
     // Line 1
-    Station('Helwan', 3, 'Line 1'),
-    Station('Ain Helwan', 3, 'Line 1'),
-    Station('Helwan University', 3, 'Line 1'),
-    Station('Wadi Hof', 3, 'Line 1'),
-    Station('Hadayek Helwan', 3, 'Line 1'),
-    Station('El-Maasara', 3, 'Line 1'),
-    Station('Tora El-Asmant', 3, 'Line 1'),
-    Station('Kozzika', 3, 'Line 1'),
-    Station('Tora El-Balad', 3, 'Line 1'),
-    Station('Sakanat El-Maadi', 3, 'Line 1'),
-    Station('Maadi', 3, 'Line 1'),
-    Station('Hadayek El-Maadi', 3, 'Line 1'),
-    Station('Dar El-Salam', 3, 'Line 1'),
-    Station('El-Zahraa', 3, 'Line 1'),
-    Station('Mar Girgis', 3, 'Line 1'),
-    Station('El-Malek El-Saleh', 3, 'Line 1'),
-    Station('Al-Sayeda Zeinab', 3, 'Line 1'),
-    Station('Saad Zaghloul', 3, 'Line 1'),
-    Station('Sadat', 3, 'Line 1'),
-    Station('Nasser', 3, 'Line 1'),
-    Station('Orabi', 3, 'Line 1'),
-    Station('Al-Shohadaa', 3, 'Line 1'),
-    Station('Ghamra', 3, 'Line 1'),
-    Station('El-Demerdash', 3, 'Line 1'),
-    Station('Manshiet El-Sadr', 3, 'Line 1'),
-    Station('Kobri El-Qobba', 3, 'Line 1'),
-    Station('Hammamat El-Qobba', 3, 'Line 1'),
-    Station('Saray El-Qobba', 3, 'Line 1'),
-    Station('Hadayeq El-Zaitoun', 3, 'Line 1'),
-    Station('Helmeyet El-Zaitoun', 3, 'Line 1'),
-    Station('El-Matareyya', 3, 'Line 1'),
-    Station('Ain Shams', 3, 'Line 1'),
-    Station('Ezbet El-Nakhl', 3, 'Line 1'),
-    Station('El-Marg', 3, 'Line 1'),
+    Station('Helwan', 3),
+    Station('Ain Helwan', 3),
+    Station('Helwan University', 3 ),
+    Station('Wadi Hof', 3 ),
+    Station('Hadayek Helwan', 3 ),
+    Station('El-Maasara', 3 ),
+    Station('Tora El-Asmant', 3 ),
+    Station('Kozzika', 3 ),
+    Station('Tora El-Balad', 3 ),
+    Station('Sakanat El-Maadi', 3 ),
+    Station('Maadi', 3 ),
+    Station('Hadayek El-Maadi', 3 ),
+    Station('Dar El-Salam', 3 ),
+    Station('El-Zahraa', 3 ),
+    Station('Mar Girgis', 3 ),
+    Station('El-Malek El-Saleh', 3 ),
+    Station('Al-Sayeda Zeinab', 3 ),
+    Station('Saad Zaghloul', 3 ),
+    Station('Sadat', 3 ),
+    Station('Nasser', 3 ),
+    Station('Orabi', 3 ),
+    Station('Al-Shohadaa', 3 ),
+    Station('Ghamra', 3 ),
+    Station('El-Demerdash', 3 ),
+    Station('Manshiet El-Sadr', 3 ),
+    Station('Kobri El-Qobba', 3 ),
+    Station('Hammamat El-Qobba', 3 ),
+    Station('Saray El-Qobba', 3 ),
+    Station('Hadayeq El-Zaitoun', 3 ),
+    Station('Helmeyet El-Zaitoun', 3 ),
+    Station('El-Matareyya', 3 ),
+    Station('Ain Shams', 3 ),
+    Station('Ezbet El-Nakhl', 3 ),
+    Station('El-Marg', 3 ),
     // Line 2
-    Station('Shubra El Kheima', 3, 'Line 2'),
-    Station('Kolleyyet El-Zeraa', 3, 'Line 2'),
-    Station('Mezallat', 3, 'Line 2'),
-    Station('Khalafawy', 3, 'Line 2'),
-    Station('St. Teresa', 3, 'Line 2'),
-    Station('Rod El-Farag', 3, 'Line 2'),
-    Station('Massara', 3, 'Line 2'),
-    Station('Al-Shohadaa', 3, 'Line 2'),
-    Station('Attaba', 3, 'Line 2'),
-    Station('Mohamed Naguib', 3, 'Line 2'),
-    Station('Sadat', 3, 'Line 2'),
-    Station('Opera', 3, 'Line 2'),
-    Station('Dokki', 3, 'Line 2'),
-    Station('El Bohooth', 3, 'Line 2'),
-    Station('Cairo University', 3, 'Line 2'),
-    Station('Faisal', 3, 'Line 2'),
-    Station('Giza', 3, 'Line 2'),
-    Station('Omm El Misryeen', 3, 'Line 2'),
-    Station('Sakiat Mekki', 3, 'Line 2'),
-    Station('El Mounib', 3, 'Line 2'),
+    Station('Shubra El Kheima', 3  ),
+    Station('Kolleyyet El-Zeraa', 3  ),
+    Station('Mezallat', 3  ),
+    Station('Khalafawy', 3  ),
+    Station('St. Teresa', 3  ),
+    Station('Rod El-Farag', 3  ),
+    Station('Massara', 3  ),
+    Station('Al-Shohadaa', 3  ),
+    Station('Attaba', 3  ),
+    Station('Mohamed Naguib', 3  ),
+    Station('Sadat', 3  ),
+    Station('Opera', 3  ),
+    Station('Dokki', 3  ),
+    Station('El Bohooth', 3  ),
+    Station('Cairo University', 3  ),
+    Station('Faisal', 3  ),
+    Station('Giza', 3  ),
+    Station('Omm El Misryeen', 3  ),
+    Station('Sakiat Mekki', 3  ),
+    Station('El Mounib', 3  ),
     // Line 3
-    Station('Adly Mansour', 3, 'Line 3'),
-    Station('El Haykestep', 3, 'Line 3'),
-    Station('Omar Ibn El Khattab', 3, 'Line 3'),
-    Station('Quba', 3, 'Line 3'),
-    Station('Hesham Barakat', 3, 'Line 3'),
-    Station('El Nozha', 3, 'Line 3'),
-    Station('Nadi El Shams', 3, 'Line 3'),
-    Station('Alf Maskan', 3, 'Line 3'),
-    Station('Heliopolis', 3, 'Line 3'),
-    Station('Haroun', 3, 'Line 3'),
-    Station('Al Ahram', 3, 'Line 3'),
-    Station('Koleyet El Banat', 3, 'Line 3'),
-    Station('Stadium', 3, 'Line 3'),
-    Station('Fair Zone', 3, 'Line 3'),
-    Station('Abbassia', 3, 'Line 3'),
-    Station('Abdou Pasha', 3, 'Line 3'),
-    Station('Bab El Shaaria', 3, 'Line 3'),
-    Station('Attaba', 3, 'Line 3'),
-    Station('Nasser', 3, 'Line 3'),
-    Station('Maspero', 3, 'Line 3'),
-    Station('Safaa Hegazy', 3, 'Line 3'),
-    Station('Kit Kat', 3, 'Line 3'),
-    Station('Sudan', 3, 'Line 3'),
-    Station('Imbaba', 3, 'Line 3'),
-    Station('El Bohooth', 3, 'Line 3'),
-    Station('Cairo University', 3, 'Line 3'),
+    Station('Adly Mansour', 3 ),
+    Station('El Haykestep', 3 ),
+    Station('Omar Ibn El Khattab', 3 ),
+    Station('Quba', 3 ),
+    Station('Hesham Barakat', 3 ),
+    Station('El Nozha', 3 ),
+    Station('Nadi El Shams', 3 ),
+    Station('Alf Maskan', 3 ),
+    Station('Heliopolis', 3 ),
+    Station('Haroun', 3 ),
+    Station('Al Ahram', 3 ),
+    Station('Koleyet El Banat', 3 ),
+    Station('Stadium', 3 ),
+    Station('Fair Zone', 3 ),
+    Station('Abbassia', 3 ),
+    Station('Abdou Pasha', 3 ),
+    Station('Bab El Shaaria', 3 ),
+    Station('Attaba', 3 ),
+    Station('Nasser', 3 ),
+    Station('Maspero', 3 ),
+    Station('Safaa Hegazy', 3 ),
+    Station('Kit Kat', 3 ),
+    Station('Sudan', 3 ),
+    Station('Imbaba', 3 ),
+    Station('El Bohooth', 3 ),
+    Station('Cairo University', 3 ),
   ];
 
   final List<String> ticketTypes = [

@@ -190,15 +190,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(height: 32),
-                Row(
+                const Row(
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.location_on_rounded,
                       color: Color(0xFF4A90E2),
                       size: 24,
                     ),
-                    const SizedBox(width: 8),
-                    const Text(
+                    SizedBox(width: 8),
+                    Text(
                       'Nearest Station',
                       style: TextStyle(
                         color: Colors.white,

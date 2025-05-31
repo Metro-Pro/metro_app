@@ -195,15 +195,15 @@ class _MetroJourneyPageState extends State<MetroJourneyPage> {
                 ),
                 const SizedBox(height: 24),
                 // Nearest Station Section
-                Row(
+                const Row(
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.location_on,
                       color: Colors.blue,
                       size: 24,
                     ),
-                    const SizedBox(width: 8),
-                    const Text(
+                    SizedBox(width: 8),
+                    Text(
                       'Nearest Station',
                       style: TextStyle(
                         color: Colors.white,
