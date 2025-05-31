@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:metro_app/view/pages/payment.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class Station {
   final String name;
@@ -53,8 +54,7 @@ class SearchableDropdown extends StatelessWidget {
             children: [
               const Icon(
                 Icons.location_on,
-                color:
-                     Colors.white70,
+                color: Colors.white70,
                 size: 20,
               ),
               const SizedBox(width: 12),
@@ -80,7 +80,6 @@ class SearchableDropdown extends StatelessWidget {
                             value != null ? FontWeight.w500 : FontWeight.normal,
                       ),
                     ),
-                    
                   ],
                 ),
               ),
@@ -91,7 +90,6 @@ class SearchableDropdown extends StatelessWidget {
       ),
     );
   }
-
 }
 
 class StationSearchDialog extends StatefulWidget {
@@ -189,7 +187,6 @@ class _StationSearchDialogState extends State<StationSearchDialog> {
     );
   }
 
-
   @override
   void dispose() {
     _searchController.dispose();
@@ -215,86 +212,86 @@ class TicketPageState extends State<TicketPage> {
     // Line 1
     Station('Helwan', 3),
     Station('Ain Helwan', 3),
-    Station('Helwan University', 3 ),
-    Station('Wadi Hof', 3 ),
-    Station('Hadayek Helwan', 3 ),
-    Station('El-Maasara', 3 ),
-    Station('Tora El-Asmant', 3 ),
-    Station('Kozzika', 3 ),
-    Station('Tora El-Balad', 3 ),
-    Station('Sakanat El-Maadi', 3 ),
-    Station('Maadi', 3 ),
-    Station('Hadayek El-Maadi', 3 ),
-    Station('Dar El-Salam', 3 ),
-    Station('El-Zahraa', 3 ),
-    Station('Mar Girgis', 3 ),
-    Station('El-Malek El-Saleh', 3 ),
-    Station('Al-Sayeda Zeinab', 3 ),
-    Station('Saad Zaghloul', 3 ),
-    Station('Sadat', 3 ),
-    Station('Nasser', 3 ),
-    Station('Orabi', 3 ),
-    Station('Al-Shohadaa', 3 ),
-    Station('Ghamra', 3 ),
-    Station('El-Demerdash', 3 ),
-    Station('Manshiet El-Sadr', 3 ),
-    Station('Kobri El-Qobba', 3 ),
-    Station('Hammamat El-Qobba', 3 ),
-    Station('Saray El-Qobba', 3 ),
-    Station('Hadayeq El-Zaitoun', 3 ),
-    Station('Helmeyet El-Zaitoun', 3 ),
-    Station('El-Matareyya', 3 ),
-    Station('Ain Shams', 3 ),
-    Station('Ezbet El-Nakhl', 3 ),
-    Station('El-Marg', 3 ),
+    Station('Helwan University', 3),
+    Station('Wadi Hof', 3),
+    Station('Hadayek Helwan', 3),
+    Station('El-Maasara', 3),
+    Station('Tora El-Asmant', 3),
+    Station('Kozzika', 3),
+    Station('Tora El-Balad', 3),
+    Station('Sakanat El-Maadi', 3),
+    Station('Maadi', 3),
+    Station('Hadayek El-Maadi', 3),
+    Station('Dar El-Salam', 3),
+    Station('El-Zahraa', 3),
+    Station('Mar Girgis', 3),
+    Station('El-Malek El-Saleh', 3),
+    Station('Al-Sayeda Zeinab', 3),
+    Station('Saad Zaghloul', 3),
+    Station('Sadat', 3),
+    Station('Nasser', 3),
+    Station('Orabi', 3),
+    Station('Al-Shohadaa', 3),
+    Station('Ghamra', 3),
+    Station('El-Demerdash', 3),
+    Station('Manshiet El-Sadr', 3),
+    Station('Kobri El-Qobba', 3),
+    Station('Hammamat El-Qobba', 3),
+    Station('Saray El-Qobba', 3),
+    Station('Hadayeq El-Zaitoun', 3),
+    Station('Helmeyet El-Zaitoun', 3),
+    Station('El-Matareyya', 3),
+    Station('Ain Shams', 3),
+    Station('Ezbet El-Nakhl', 3),
+    Station('El-Marg', 3),
     // Line 2
-    Station('Shubra El Kheima', 3  ),
-    Station('Kolleyyet El-Zeraa', 3  ),
-    Station('Mezallat', 3  ),
-    Station('Khalafawy', 3  ),
-    Station('St. Teresa', 3  ),
-    Station('Rod El-Farag', 3  ),
-    Station('Massara', 3  ),
-    Station('Al-Shohadaa', 3  ),
-    Station('Attaba', 3  ),
-    Station('Mohamed Naguib', 3  ),
-    Station('Sadat', 3  ),
-    Station('Opera', 3  ),
-    Station('Dokki', 3  ),
-    Station('El Bohooth', 3  ),
-    Station('Cairo University', 3  ),
-    Station('Faisal', 3  ),
-    Station('Giza', 3  ),
-    Station('Omm El Misryeen', 3  ),
-    Station('Sakiat Mekki', 3  ),
-    Station('El Mounib', 3  ),
+    Station('Shubra El Kheima', 3),
+    Station('Kolleyyet El-Zeraa', 3),
+    Station('Mezallat', 3),
+    Station('Khalafawy', 3),
+    Station('St. Teresa', 3),
+    Station('Rod El-Farag', 3),
+    Station('Massara', 3),
+    Station('Al-Shohadaa', 3),
+    Station('Attaba', 3),
+    Station('Mohamed Naguib', 3),
+    Station('Sadat', 3),
+    Station('Opera', 3),
+    Station('Dokki', 3),
+    Station('El Bohooth', 3),
+    Station('Cairo University', 3),
+    Station('Faisal', 3),
+    Station('Giza', 3),
+    Station('Omm El Misryeen', 3),
+    Station('Sakiat Mekki', 3),
+    Station('El Mounib', 3),
     // Line 3
-    Station('Adly Mansour', 3 ),
-    Station('El Haykestep', 3 ),
-    Station('Omar Ibn El Khattab', 3 ),
-    Station('Quba', 3 ),
-    Station('Hesham Barakat', 3 ),
-    Station('El Nozha', 3 ),
-    Station('Nadi El Shams', 3 ),
-    Station('Alf Maskan', 3 ),
-    Station('Heliopolis', 3 ),
-    Station('Haroun', 3 ),
-    Station('Al Ahram', 3 ),
-    Station('Koleyet El Banat', 3 ),
-    Station('Stadium', 3 ),
-    Station('Fair Zone', 3 ),
-    Station('Abbassia', 3 ),
-    Station('Abdou Pasha', 3 ),
-    Station('Bab El Shaaria', 3 ),
-    Station('Attaba', 3 ),
-    Station('Nasser', 3 ),
-    Station('Maspero', 3 ),
-    Station('Safaa Hegazy', 3 ),
-    Station('Kit Kat', 3 ),
-    Station('Sudan', 3 ),
-    Station('Imbaba', 3 ),
-    Station('El Bohooth', 3 ),
-    Station('Cairo University', 3 ),
+    Station('Adly Mansour', 3),
+    Station('El Haykestep', 3),
+    Station('Omar Ibn El Khattab', 3),
+    Station('Quba', 3),
+    Station('Hesham Barakat', 3),
+    Station('El Nozha', 3),
+    Station('Nadi El Shams', 3),
+    Station('Alf Maskan', 3),
+    Station('Heliopolis', 3),
+    Station('Haroun', 3),
+    Station('Al Ahram', 3),
+    Station('Koleyet El Banat', 3),
+    Station('Stadium', 3),
+    Station('Fair Zone', 3),
+    Station('Abbassia', 3),
+    Station('Abdou Pasha', 3),
+    Station('Bab El Shaaria', 3),
+    Station('Attaba', 3),
+    Station('Nasser', 3),
+    Station('Maspero', 3),
+    Station('Safaa Hegazy', 3),
+    Station('Kit Kat', 3),
+    Station('Sudan', 3),
+    Station('Imbaba', 3),
+    Station('El Bohooth', 3),
+    Station('Cairo University', 3),
   ];
 
   final List<String> ticketTypes = [
@@ -340,15 +337,191 @@ class TicketPageState extends State<TicketPage> {
     }
   }
 
+  void _showQRCode(BuildContext context) {
+    if (selectedTicketType == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please select a ticket type first'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        backgroundColor: Colors.transparent,
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xFF1A1A1A),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      selectedTicketType!,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.green.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Text(
+                        'ACTIVE',
+                        style: TextStyle(
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 32),
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: QrImageView(
+                  data: '''
+                    Ticket Type: $selectedTicketType
+                    From: ${fromStation?.name ?? 'N/A'}
+                    To: ${toStation?.name ?? 'N/A'}
+                    Price: EGP ${ticketPrice.toStringAsFixed(0)}
+                    Date: ${DateTime.now().toString()}
+                  ''',
+                  version: QrVersions.auto,
+                  size: 200,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  _getValidityText(),
+                  style: TextStyle(
+                    color: Colors.orange[300],
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              if (fromStation != null && toStation != null)
+                Container(
+                  margin: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[900],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          const Text(
+                            'From: ',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text(
+                            fromStation!.name,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          const Text(
+                            'To: ',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text(
+                            toStation!.name,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              TextButton.icon(
+                onPressed: () => Navigator.pop(context),
+                icon: const Icon(Icons.close, color: Colors.blue),
+                label: const Text(
+                  'Close',
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  String _getValidityText() {
+    switch (selectedTicketType) {
+      case 'Single Journey':
+        return 'Valid for 2 hours';
+      case '1-Day Pass':
+        return 'Valid for 24 hours';
+      case '3-Day Pass':
+        return 'Valid for 3 days';
+      case '7-Day Pass':
+        return 'Valid for 7 days';
+      default:
+        return '';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(33, 33, 33, 1),
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(33, 33, 33, 1),
-        title: const Text(
-          'Buy Ticket',
-          style: TextStyle(color: Colors.white),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'Buy Ticket',
+              style: TextStyle(color: Colors.white),
+            ),
+            IconButton(
+              icon: const Icon(Icons.qr_code, color: Colors.white),
+              onPressed: () => _showQRCode(context),
+            ),
+          ],
         ),
         elevation: 0,
       ),
