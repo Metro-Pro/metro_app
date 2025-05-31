@@ -325,6 +325,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
+                const SizedBox(height: 10,),
                 const Row(
                   children: [
                     Icon(
@@ -332,7 +333,7 @@ class _HomePageState extends State<HomePage> {
                       color: Color(0xFF4A90E2),
                       size: 24,
                     ),
-                    SizedBox(width: 8),
+                    SizedBox(width: 15),
                     Text(
                       'Nearest Station',
                       style: TextStyle(
@@ -343,7 +344,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 1),
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
