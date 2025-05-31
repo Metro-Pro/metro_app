@@ -2,6 +2,7 @@ import 'package:metro_app/view/pages/screen_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:metro_app/view/pages/sign_up.dart';
 import 'package:metro_app/view/pages/forgot_password.dart';
+import 'package:metro_app/services/login_service.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -15,6 +16,7 @@ class LoginPageState extends State<Login> {
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _obscurePassword = true;
+  bool _isLoading = false;
 
   @override
   void dispose() {
@@ -23,11 +25,24 @@ class LoginPageState extends State<Login> {
     super.dispose();
   }
 
-  void _login() {
-    if (_formKey.currentState?.validate() ?? false) {
+  Future<void> _login() async {
+    if (!(_formKey.currentState?.validate() ?? false)) return;
+    setState(() => _isLoading = true);
+    final loginService = LoginService();
+    final success = await loginService.login(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+    setState(() => _isLoading = false);
+    if (success) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const ScreenWrapper()),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text('Login failed. Please check your credentials.')),
       );
     }
   }
@@ -229,20 +244,22 @@ class LoginPageState extends State<Login> {
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: _login,
+                      onPressed: _isLoading ? null : _login,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child: const Text(
-                        'Sign In',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
+                      child: _isLoading
+                          ? const CircularProgressIndicator()
+                          : const Text(
+                              'Sign In',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                     ),
                   ),
                   const SizedBox(height: 24),

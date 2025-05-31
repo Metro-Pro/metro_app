@@ -53,8 +53,7 @@ class SearchableDropdown extends StatelessWidget {
             children: [
               const Icon(
                 Icons.location_on,
-                color:
-                     Colors.white70,
+                color: Colors.white70,
                 size: 20,
               ),
               const SizedBox(width: 12),
@@ -80,7 +79,6 @@ class SearchableDropdown extends StatelessWidget {
                             value != null ? FontWeight.w500 : FontWeight.normal,
                       ),
                     ),
-                    
                   ],
                 ),
               ),
@@ -91,7 +89,6 @@ class SearchableDropdown extends StatelessWidget {
       ),
     );
   }
-
 }
 
 class StationSearchDialog extends StatefulWidget {
@@ -189,7 +186,6 @@ class _StationSearchDialogState extends State<StationSearchDialog> {
     );
   }
 
-
   @override
   void dispose() {
     _searchController.dispose();
@@ -215,129 +211,111 @@ class TicketPageState extends State<TicketPage> {
     // Line 1
     Station('Helwan', 3),
     Station('Ain Helwan', 3),
-    Station('Helwan University', 3 ),
-    Station('Wadi Hof', 3 ),
-    Station('Hadayek Helwan', 3 ),
-    Station('El-Maasara', 3 ),
-    Station('Tora El-Asmant', 3 ),
-    Station('Kozzika', 3 ),
-    Station('Tora El-Balad', 3 ),
-    Station('Sakanat El-Maadi', 3 ),
-    Station('Maadi', 3 ),
-    Station('Hadayek El-Maadi', 3 ),
-    Station('Dar El-Salam', 3 ),
-    Station('El-Zahraa', 3 ),
-    Station('Mar Girgis', 3 ),
-    Station('El-Malek El-Saleh', 3 ),
-    Station('Al-Sayeda Zeinab', 3 ),
-    Station('Saad Zaghloul', 3 ),
-    Station('Sadat', 3 ),
-    Station('Nasser', 3 ),
-    Station('Orabi', 3 ),
-    Station('Al-Shohadaa', 3 ),
-    Station('Ghamra', 3 ),
-    Station('El-Demerdash', 3 ),
-    Station('Manshiet El-Sadr', 3 ),
-    Station('Kobri El-Qobba', 3 ),
-    Station('Hammamat El-Qobba', 3 ),
-    Station('Saray El-Qobba', 3 ),
-    Station('Hadayeq El-Zaitoun', 3 ),
-    Station('Helmeyet El-Zaitoun', 3 ),
-    Station('El-Matareyya', 3 ),
-    Station('Ain Shams', 3 ),
-    Station('Ezbet El-Nakhl', 3 ),
-    Station('El-Marg', 3 ),
+    Station('Helwan University', 3),
+    Station('Wadi Hof', 3),
+    Station('Hadayek Helwan', 3),
+    Station('El-Maasara', 3),
+    Station('Tora El-Asmant', 3),
+    Station('Kozzika', 3),
+    Station('Tora El-Balad', 3),
+    Station('Sakanat El-Maadi', 3),
+    Station('Maadi', 3),
+    Station('Hadayek El-Maadi', 3),
+    Station('Dar El-Salam', 3),
+    Station('El-Zahraa', 3),
+    Station('Mar Girgis', 3),
+    Station('El-Malek El-Saleh', 3),
+    Station('Al-Sayeda Zeinab', 3),
+    Station('Saad Zaghloul', 3),
+    Station('Sadat', 3),
+    Station('Nasser', 3),
+    Station('Orabi', 3),
+    Station('Al-Shohadaa', 3),
+    Station('Ghamra', 3),
+    Station('El-Demerdash', 3),
+    Station('Manshiet El-Sadr', 3),
+    Station('Kobri El-Qobba', 3),
+    Station('Hammamat El-Qobba', 3),
+    Station('Saray El-Qobba', 3),
+    Station('Hadayeq El-Zaitoun', 3),
+    Station('Helmeyet El-Zaitoun', 3),
+    Station('El-Matareyya', 3),
+    Station('Ain Shams', 3),
+    Station('Ezbet El-Nakhl', 3),
+    Station('El-Marg', 3),
     // Line 2
-    Station('Shubra El Kheima', 3  ),
-    Station('Kolleyyet El-Zeraa', 3  ),
-    Station('Mezallat', 3  ),
-    Station('Khalafawy', 3  ),
-    Station('St. Teresa', 3  ),
-    Station('Rod El-Farag', 3  ),
-    Station('Massara', 3  ),
-    Station('Al-Shohadaa', 3  ),
-    Station('Attaba', 3  ),
-    Station('Mohamed Naguib', 3  ),
-    Station('Sadat', 3  ),
-    Station('Opera', 3  ),
-    Station('Dokki', 3  ),
-    Station('El Bohooth', 3  ),
-    Station('Cairo University', 3  ),
-    Station('Faisal', 3  ),
-    Station('Giza', 3  ),
-    Station('Omm El Misryeen', 3  ),
-    Station('Sakiat Mekki', 3  ),
-    Station('El Mounib', 3  ),
+    Station('Shubra El Kheima', 3),
+    Station('Kolleyyet El-Zeraa', 3),
+    Station('Mezallat', 3),
+    Station('Khalafawy', 3),
+    Station('St. Teresa', 3),
+    Station('Rod El-Farag', 3),
+    Station('Massara', 3),
+    Station('Al-Shohadaa', 3),
+    Station('Attaba', 3),
+    Station('Mohamed Naguib', 3),
+    Station('Sadat', 3),
+    Station('Opera', 3),
+    Station('Dokki', 3),
+    Station('El Bohooth', 3),
+    Station('Cairo University', 3),
+    Station('Faisal', 3),
+    Station('Giza', 3),
+    Station('Omm El Misryeen', 3),
+    Station('Sakiat Mekki', 3),
+    Station('El Mounib', 3),
     // Line 3
-    Station('Adly Mansour', 3 ),
-    Station('El Haykestep', 3 ),
-    Station('Omar Ibn El Khattab', 3 ),
-    Station('Quba', 3 ),
-    Station('Hesham Barakat', 3 ),
-    Station('El Nozha', 3 ),
-    Station('Nadi El Shams', 3 ),
-    Station('Alf Maskan', 3 ),
-    Station('Heliopolis', 3 ),
-    Station('Haroun', 3 ),
-    Station('Al Ahram', 3 ),
-    Station('Koleyet El Banat', 3 ),
-    Station('Stadium', 3 ),
-    Station('Fair Zone', 3 ),
-    Station('Abbassia', 3 ),
-    Station('Abdou Pasha', 3 ),
-    Station('Bab El Shaaria', 3 ),
-    Station('Attaba', 3 ),
-    Station('Nasser', 3 ),
-    Station('Maspero', 3 ),
-    Station('Safaa Hegazy', 3 ),
-    Station('Kit Kat', 3 ),
-    Station('Sudan', 3 ),
-    Station('Imbaba', 3 ),
-    Station('El Bohooth', 3 ),
-    Station('Cairo University', 3 ),
+    Station('Adly Mansour', 3),
+    Station('El Haykestep', 3),
+    Station('Omar Ibn El Khattab', 3),
+    Station('Quba', 3),
+    Station('Hesham Barakat', 3),
+    Station('El Nozha', 3),
+    Station('Nadi El Shams', 3),
+    Station('Alf Maskan', 3),
+    Station('Heliopolis', 3),
+    Station('Haroun', 3),
+    Station('Al Ahram', 3),
+    Station('Koleyet El Banat', 3),
+    Station('Stadium', 3),
+    Station('Fair Zone', 3),
+    Station('Abbassia', 3),
+    Station('Abdou Pasha', 3),
+    Station('Bab El Shaaria', 3),
+    Station('Attaba', 3),
+    Station('Nasser', 3),
+    Station('Maspero', 3),
+    Station('Safaa Hegazy', 3),
+    Station('Kit Kat', 3),
+    Station('Sudan', 3),
+    Station('Imbaba', 3),
+    Station('El Bohooth', 3),
+    Station('Cairo University', 3),
   ];
 
-  final List<String> ticketTypes = [
-    'Single Journey',
-    '1-Day Pass',
-    '3-Day Pass',
-    '7-Day Pass'
-  ];
-
-  // Peak hours are 7-9 AM and 5-7 PM
-  bool isCurrentlyPeakHours() {
-    final now = TimeOfDay.now();
-    final hour = now.hour;
-    return (hour >= 7 && hour < 9) || (hour >= 17 && hour < 19);
+  int getStationsCount() {
+    if (fromStation == null || toStation == null) return 0;
+    final fromIndex = stations.indexWhere((s) => s.name == fromStation!.name);
+    final toIndex = stations.indexWhere((s) => s.name == toStation!.name);
+    if (fromIndex == -1 || toIndex == -1) return 0;
+    return (toIndex - fromIndex).abs() + 1;
   }
 
-  String getFrequencyText(Station station) {
-    final isPeak = isCurrentlyPeakHours();
-    final baseWait = station.estimatedWaitMin;
-    final waitTime = isPeak ? baseWait : baseWait * 2;
-
-    return 'Next train in ~$waitTime mins';
+  double calculateSingleJourneyPrice() {
+    final stationsCount = getStationsCount();
+    if (stationsCount >= 1 && stationsCount <= 9) return 8.0;
+    if (stationsCount >= 10 && stationsCount <= 16) return 10.0;
+    if (stationsCount >= 17 && stationsCount <= 23) return 15.0;
+    if (stationsCount > 23) return 20.0;
+    return 0.0;
   }
 
   double calculateTicketPrice(String type) {
     if (fromStation == null || toStation == null) return 0.0;
-
-    // Base price for a journey
-    double basePrice = 5.0; // EGP 5 for a single journey
-
-    // Multiply base price based on ticket type
-    switch (type) {
-      case 'Single Journey':
-        return basePrice;
-      case '1-Day Pass':
-        return basePrice * 4; // EGP 20
-      case '3-Day Pass':
-        return basePrice * 10; // EGP 50
-      case '7-Day Pass':
-        return basePrice * 20; // EGP 100
-      default:
-        return basePrice;
-    }
+    if (type == '1-Day Pass') return 20.0;
+    if (type == '3-Day Pass') return 50.0;
+    if (type == '7-Day Pass') return 100.0;
+    return 0.0;
   }
 
   @override
@@ -422,80 +400,79 @@ class TicketPageState extends State<TicketPage> {
                 ),
               ),
               const SizedBox(height: 16),
-              ...ticketTypes.map((type) => Padding(
-                    padding: const EdgeInsets.only(bottom: 12.0),
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          selectedTicketType = type;
-                          ticketPrice = calculateTicketPrice(type);
-                        });
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(16),
+              // Only Single Journey Option
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    selectedTicketType = 'Single Journey';
+                    ticketPrice = calculateSingleJourneyPrice();
+                  });
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: selectedTicketType == 'Single Journey'
+                        ? Colors.blue.withOpacity(0.2)
+                        : Colors.white.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: selectedTicketType == 'Single Journey'
+                          ? Colors.blue
+                          : Colors.transparent,
+                      width: 2,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 24,
+                        height: 24,
                         decoration: BoxDecoration(
-                          color: selectedTicketType == type
-                              ? Colors.blue.withOpacity(0.2)
-                              : Colors.white.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(12),
+                          shape: BoxShape.circle,
                           border: Border.all(
-                            color: selectedTicketType == type
+                            color: selectedTicketType == 'Single Journey'
                                 ? Colors.blue
-                                : Colors.transparent,
+                                : Colors.white70,
                             width: 2,
                           ),
                         ),
-                        child: Row(
+                        child: selectedTicketType == 'Single Journey'
+                            ? const Icon(
+                                Icons.check,
+                                color: Colors.blue,
+                                size: 16,
+                              )
+                            : null,
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              width: 24,
-                              height: 24,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: selectedTicketType == type
-                                      ? Colors.blue
-                                      : Colors.white70,
-                                  width: 2,
-                                ),
+                            const Text(
+                              'Single Journey',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
                               ),
-                              child: selectedTicketType == type
-                                  ? const Icon(
-                                      Icons.check,
-                                      color: Colors.blue,
-                                      size: 16,
-                                    )
-                                  : null,
                             ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    type,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    'EGP ${calculateTicketPrice(type).toStringAsFixed(0)}',
-                                    style: TextStyle(
-                                      color: Colors.white.withOpacity(0.7),
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
+                            const SizedBox(height: 4),
+                            Text(
+                              'EGP ${calculateSingleJourneyPrice().toStringAsFixed(0)}',
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(0.7),
+                                fontSize: 14,
                               ),
                             ),
                           ],
                         ),
                       ),
-                    ),
-                  )),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
               if (fromStation != null &&
                   toStation != null &&
                   selectedTicketType != null) ...[

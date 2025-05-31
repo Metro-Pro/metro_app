@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 from sqlalchemy.exc import OperationalError
 
 # Update with your actual MySQL credentials
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:ABCD%401234@localhost:3306/cairo_metro"
+SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:0000@127.0.0.1:3306/cairo_metro"
 
 # Create the SQLAlchemy engine
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
