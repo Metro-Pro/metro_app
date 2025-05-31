@@ -1,10 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-
 import 'package:metro_app/features/map_page/presentation/utils/map_utils.dart';
 import 'package:metro_app/features/map_page/presentation/widgets/station_dialog.dart';
 import 'package:metro_app/features/map_page/presentation/widgets/zoom_button.dart';
@@ -58,7 +56,6 @@ class _MapPageState extends State<MapPage> {
   List<LatLng> line1Points = [];
   List<LatLng> line2Points = [];
   List<LatLng> line3Points = [];
-
   List<Station> line1 = [];
   List<Station> line2 = [];
   List<Station> line3 = [];

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:metro_app/services/payment_service.dart';
 
 class PaymentPage extends StatefulWidget {
   final double amount;
   final String paymentType; // 'subscription' or 'ticket'
-  final String? description; // Optional description of what's being paid for
+  final String? description;
 
   const PaymentPage({
     super.key,
@@ -18,62 +18,45 @@ class PaymentPage extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage> {
-  final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
-  String _selectedPaymentMethod = 'Credit Card';
 
-  // Form controllers
-  final _cardNumberController = TextEditingController();
-  final _expiryController = TextEditingController();
-  final _cvvController = TextEditingController();
-  final _nameController = TextEditingController();
-
-  @override
-  void dispose() {
-    _cardNumberController.dispose();
-    _expiryController.dispose();
-    _cvvController.dispose();
-    _nameController.dispose();
-    super.dispose();
-  }
-
-  Future<void> _processPayment() async {
-    if (!_formKey.currentState!.validate()) return;
-
+  Future<void> _payWithPaymob() async {
     setState(() => _isLoading = true);
 
     try {
-      await Future.delayed(const Duration(seconds: 2));
+      final success = await PaymentService.processPayment(
+        paymentMethod:
+            'Credit Card', // You can make this dynamic if you add payment method selection
+        amount: widget.amount,
+        context: context,
+      );
+
       if (!mounted) return;
 
-      String successMessage = widget.paymentType == 'subscription'
-          ? 'Subscription activated successfully!'
-          : 'Ticket purchased successfully!';
+      if (success) {
+        String successMessage = widget.paymentType == 'subscription'
+            ? 'Subscription activated successfully!'
+            : 'Ticket purchased successfully!';
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(successMessage)),
-      );
-      Navigator.pop(context, true);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(successMessage)),
+        );
+
+        Navigator.pop(context, true);
+      }
+      // If not success, the PaymentService already shows an error message
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Payment failed: ${e.toString()}')),
       );
     } finally {
-      if (mounted) {
-        setState(() => _isLoading = false);
-      }
+      if (mounted) setState(() => _isLoading = false);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final paymentOptions = [
-      {'icon': Icons.credit_card, 'title': 'Credit Card'},
-      {'icon': Icons.account_balance_wallet, 'title': 'Wallet'},
-      {'icon': Icons.paypal, 'title': 'PayPal'},
-    ];
-
     return Scaffold(
       backgroundColor: const Color(0xFF1E1E1E),
       appBar: AppBar(
@@ -95,7 +78,7 @@ class _PaymentPageState extends State<PaymentPage> {
         ),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
+        child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -152,238 +135,27 @@ class _PaymentPageState extends State<PaymentPage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 32),
-
-              // Payment Methods
-              const Text(
-                'Select Payment Method',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(height: 16),
-              ...paymentOptions.map((option) => Container(
-                    margin: const EdgeInsets.only(bottom: 12),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF2C2C2C),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: ListTile(
-                      contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 8),
-                      leading: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Icon(
-                          option['icon'] as IconData,
-                          color: Colors.white,
-                          size: 24,
-                        ),
-                      ),
-                      title: Text(
-                        option['title'] as String,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      trailing: Radio<String>(
-                        value: option['title'] as String,
-                        groupValue: _selectedPaymentMethod,
-                        onChanged: (value) {
-                          setState(() => _selectedPaymentMethod = value!);
-                        },
-                        activeColor: Colors.blue,
-                      ),
-                      onTap: () {
-                        setState(() =>
-                            _selectedPaymentMethod = option['title'] as String);
-                      },
-                    ),
-                  )),
-
-              if (_selectedPaymentMethod == 'Credit Card') ...[
-                const SizedBox(height: 32),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Card Details',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      TextFormField(
-                        controller: _nameController,
-                        style: const TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          labelText: 'Cardholder Name',
-                          labelStyle: const TextStyle(color: Colors.white70),
-                          filled: true,
-                          fillColor: const Color(0xFF2C2C2C),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide.none,
-                          ),
-                          prefixIcon: const Icon(Icons.person_outline,
-                              color: Colors.white70),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter cardholder name';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 16),
-                      TextFormField(
-                        controller: _cardNumberController,
-                        style: const TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          labelText: 'Card Number',
-                          labelStyle: const TextStyle(color: Colors.white70),
-                          filled: true,
-                          fillColor: const Color(0xFF2C2C2C),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide.none,
-                          ),
-                          prefixIcon: const Icon(Icons.credit_card,
-                              color: Colors.white70),
-                        ),
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
-                          LengthLimitingTextInputFormatter(16),
-                        ],
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter card number';
-                          }
-                          if (value.length != 16) {
-                            return 'Card number must be 16 digits';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 16),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              controller: _expiryController,
-                              style: const TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
-                                labelText: 'MM/YY',
-                                labelStyle:
-                                    const TextStyle(color: Colors.white70),
-                                filled: true,
-                                fillColor: const Color(0xFF2C2C2C),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                  borderSide: BorderSide.none,
-                                ),
-                                prefixIcon: const Icon(Icons.calendar_today,
-                                    color: Colors.white70),
-                              ),
-                              keyboardType: TextInputType.number,
-                              inputFormatters: [
-                                FilteringTextInputFormatter.digitsOnly,
-                                LengthLimitingTextInputFormatter(4),
-                              ],
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Required';
-                                }
-                                if (value.length != 4) {
-                                  return 'Invalid format';
-                                }
-                                return null;
-                              },
-                            ),
-                          ),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: TextFormField(
-                              controller: _cvvController,
-                              style: const TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
-                                labelText: 'CVV',
-                                labelStyle:
-                                    const TextStyle(color: Colors.white70),
-                                filled: true,
-                                fillColor: const Color(0xFF2C2C2C),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                  borderSide: BorderSide.none,
-                                ),
-                                prefixIcon: const Icon(Icons.lock_outline,
-                                    color: Colors.white70),
-                              ),
-                              keyboardType: TextInputType.number,
-                              inputFormatters: [
-                                FilteringTextInputFormatter.digitsOnly,
-                                LengthLimitingTextInputFormatter(3),
-                              ],
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Required';
-                                }
-                                if (value.length != 3) {
-                                  return 'Invalid CVV';
-                                }
-                                return null;
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-
-              const SizedBox(height: 32),
-
-              // Pay Button
+              const Spacer(),
               SizedBox(
                 width: double.infinity,
                 height: 56,
                 child: ElevatedButton(
-                  onPressed: _isLoading ? null : _processPayment,
+                  onPressed: _isLoading ? null : _payWithPaymob,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    elevation: 0,
                   ),
                   child: _isLoading
-                      ? const SizedBox(
-                          height: 24,
-                          width: 24,
-                          child: CircularProgressIndicator(
-                            color: Colors.white,
-                            strokeWidth: 2,
-                          ),
-                        )
+                      ? const CircularProgressIndicator(
+                          color: Colors.white, strokeWidth: 2)
                       : const Text(
-                          'Pay Now',
+                          'Pay with Paymob',
                           style: TextStyle(
+                            color: Colors.white,
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
-                            color: Colors.white,
                           ),
                         ),
                 ),

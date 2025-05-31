@@ -1,31 +1,39 @@
 class User {
-  final String name;
+  final String firstname;
+  final String lastname;
+  final String username;
   final String email;
   final String phone;
-  final String? profilePicture;
+  final String password;
 
   User({
-    required this.name,
+    required this.firstname,
+    required this.lastname,
+    required this.username,
     required this.email,
     required this.phone,
-    this.profilePicture,
+    required this.password,
   });
 
   Map<String, dynamic> toJson() {
     return {
-      'name': name,
+      'firstname': firstname,
+      'lastname': lastname,
+      'username': username,
       'email': email,
       'phone': phone,
-      'profilePicture': profilePicture,
+      'password': password,
     };
   }
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      name: json['name'] as String,
+      firstname: json['firstname'] as String,
+      lastname: json['lastname'] as String,
+      username: json['username'] as String,
       email: json['email'] as String,
       phone: json['phone'] as String,
-      profilePicture: json['profilePicture'] as String?,
+      password: json['password'] as String,
     );
   }
 
@@ -33,22 +41,26 @@ class User {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     return other is User &&
-        other.name == name &&
+        other.firstname == firstname &&
+        other.lastname == lastname &&
+        other.username == username &&
         other.email == email &&
         other.phone == phone &&
-        other.profilePicture == profilePicture;
+        other.password == password;
   }
 
   @override
   int get hashCode {
-    return name.hashCode ^
+    return firstname.hashCode ^
+        lastname.hashCode ^
+        username.hashCode ^
         email.hashCode ^
         phone.hashCode ^
-        profilePicture.hashCode;
+        password.hashCode;
   }
 
   @override
   String toString() {
-    return 'User(name: $name, email: $email, phone: $phone)';
+    return 'User(firstname: $firstname, lastname: $lastname, username: $username, email: $email, phone: $phone)';
   }
 }
